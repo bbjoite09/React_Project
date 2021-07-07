@@ -46,7 +46,8 @@
    <details>
    <summary>Class</summary><br>
     객체 단위로 코드를 그룹화하고 쉽게 재사용하기 위해 사용. Class를 통하여 내용을 정의한 후 여러차례 재사용할 수 있다.
-
+   <br>
+   
       ```javascript
       Class Cat {
           // 생성자 함수
@@ -101,7 +102,7 @@
    </details>
    <details>
       <summary>Spread 연산자(...)</summary><br>
-      객체 내부 요소를 객체 외부로 꺼내준다.
+      객체 내부 요소를 객체 외부로 꺼내준다.<br>
 
          ```javascript
          let array = [1,2,3,4,5];
@@ -109,10 +110,67 @@
          ```
    </details>
    <details>
-   <summary>조건부 삼항 연산자</summary><br>
-   <b>조건 ? 참일 경우 : 거짓일 경우</b>
-
+      <summary>조건부 삼항 연산자</summary><br>
+      조건 ? 참일 경우 : 거짓일 경우
+   </details>
 <br>
 
+2. Array
+   <details>
+      <summary>map</summary><br>
+      기존의 array에 연산을 하여 새로운 배열을 생성할 수 있다. 이때  원본 값은 훼손되지 않는다.
+      <br>
+   
+      ```javascript
+      const array1 = [0, 1, 2, 3];
+      const array2 = array1.map((array_item) => {
+        return array_item + 1;
+      });
+      ```      
+      
+      이 경우 원본배열은 그대로 [0, 1, 2, 3] 이나, 새로 생성한 배열 array2는 [1, 2, 3, 4]의 리스트를 가진다는 것을 확인할 수 있다.
+   </details>
+   <details>
+      <summary>filter</summary><br>
+      map의 경우 map을 통해 얻어낸 배열이 원본배열의 길이와 같다는 것을 알 수 있다. 원본 배열에서 필요한 요소를 filtering해 원하는 값만 가져오도록 하는 것이 filter이다.
+      <br>
+   
+      ```javascript
+      const array1 = [0, 1, 2, 3];
+      const array2 = array1.filter((array_item) => {
+        return array_item > 2;
+      });
+      ```
+   
+      array2는 [3]의 리스트를 가진다는 것을 알 수 있다.
+   </details>
+   <details>
+      <summary>concat</summary><br>
+      concat을 사용하여 원본 배열을 변화시키지 않으면서 두 배열을 합치거나 요소를 추가할 수 있다. 이때 concat은 중복 항목을 제거해주지 않는다는 특징이 있다.<br>
+      중복 항목이 자동으로 제거되도록 하기 위하여 Set을 사용할 수 있다.
+   
+      ```javascript
+      const array1 = [0, 1, 2, 3];
+      const array2 = [3, 4, 5];
+   
+      const new_array = [...new Set(array1.concat(array2))]
+      ```
+   </details>
 
+   <details>
+      <summary>from</summary><br>
+      
+      ```javascript
+      const my_name = "heeeon";
+      const my_name_array = Array.from(my_name);
+      
+      console.log(my_name_array);   // ['h', 'e', 'e', 'e', 'o', 'n']
+      
+      // 배열 초기화
+      const new_array = Array.from({length: 5}, (item, idx)=>{ return idx;});
+      // 출력 결과는 길이가 5인 배열에 0부터 순서대로 삽입된 것을 확인할 수 있다.
+      console.log(new_array);   // [0, 1, 2, 3, 4]
+      ```
+
+   </details>
 </details>
