@@ -36,13 +36,12 @@
    html 단위 하나하나를 객체로 생각하는 모델을 말한다. 즉 부모-자식의 관계를 갖는 트리구조임을 의미한다.
 
 </details>
-<details open>
+<details>
   <summary><b>2021.07.07</b></summary><br>
 
 1. ES6문법
 
    React는 javascript 라이브러리로, 자바스크립트의 표준 규약 중 가장 보편화 된 ES6 문법을 학습하였다.
-   <br><br>
    <details>
    <summary>Class</summary><br>
     객체 단위로 코드를 그룹화하고 쉽게 재사용하기 위해 사용. Class를 통하여 내용을 정의한 후 여러차례 재사용할 수 있다.
@@ -113,7 +112,7 @@
       <summary>조건부 삼항 연산자</summary><br>
       조건 ? 참일 경우 : 거짓일 경우
    </details>
-<br>
+
 
 2. Array
    <details>
