@@ -43,7 +43,7 @@
 
    React는 javascript 라이브러리로, 자바스크립트의 표준 규약 중 가장 보편화 된 ES6 문법을 학습하였다.
    <br><br>
-   <details>
+   <details open>
    <summary>Class</summary><br>
     객체 단위로 코드를 그룹화하고 쉽게 재사용하기 위해 사용. Class를 통하여 내용을 정의한 후 여러차례 재사용할 수 있다.
    <br>
