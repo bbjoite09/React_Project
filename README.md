@@ -173,3 +173,51 @@
 
    </details>
 </details>
+
+<details open>
+  <summary><b>2021.07.08</b></summary><br>
+
+   1. nvm
+      ```shell
+      // node 안정적인 버전 설치
+      $ nvm install 12.18.4
+      // node 가장 최신 버전 설치
+      $ nvm install 14.13.0
+
+      // 노드가 잘 설치되었는지 확인
+      $ node -v
+
+      // 안정적인 버전으로 바꾸기
+      $ nvm use 12.18.4
+      ```
+
+2. npm & yarn
+
+   npm(Node Package Manager)은 여러 third-party 패키지를 활용할 수 있도록 한다. 비슷하게 yarn이 있는데 npm과 yarn은 프론트엔드의 의존성을 관리하기 위한 패키지 매니저이다. 이때 npm은 node를 설치하면서 자동으로 설치되기 때문에 따로 설치하지 않아도 된다는 특징이 있다.<br><br>
+
+   - yarn 설치하기
+
+      ```shell
+      // -g : 컴퓨터 전체에 설치
+      $ npm install -g yarn
+
+      // yarn 설치 확인
+      $ yarn -v
+      ```
+
+   - yarn으로 CRA(Create React App)  설치하기 - CRA는 웹사이트 제작을 위해 필요한 패키지들의 모음이라고 할 수 있다.
+
+      ```shell
+      $ yarn add global create-react-app
+      ```
+
+3. React Project 시작
+
+week-1 project를 아래의 명령어로 시작한다.
+
+```shell
+   $ yarn create react-app week-1
+```
+
+week-1 내부 폴더를 살펴보면 첫번째로 node_modules를 확인할 수 있다. 이 폴더는 앞으로 yarn으로 설치할 수많은 패키지들이 담기는 장소이다.
+</details>
