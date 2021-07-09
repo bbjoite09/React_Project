@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Start = (props) => {
+const Start2 = (props) => {
     const name = props.name;
     return (
         <div className="title">
@@ -25,4 +25,4 @@ const Start = (props) => {
             }
 
 
-            export default Start;
+            export default Start2;
