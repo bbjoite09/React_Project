@@ -290,4 +290,26 @@
 
 - Props : 부모 Component로 부터 받아온 데이터
 
+3. CSS
+
+   App.js에서 state를 정의하고, 이를 props로 start2.js로 전달한다. 또한 App.js에서 hw.css를 연동시켜 화면을 꾸밀 수 있다.
+
+   ```javascript
+   // App.js
+   // CSS import
+   import './hw.css'
+   
+   // 컴포넌트 넘겨주기
+   render() {
+         return (
+         <div className="App">
+           {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
+           <Start2 name={this.state.name}/>
+         </div>
+       );
+     }
+   ```
+   <br>
+   실습 내용은 아래와 같다.
+   <p align="center"><img src="images/week-1.JPG"></p>
 </details>
