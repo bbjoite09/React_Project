@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 // BucketList 컴포넌트를 import 해옵니다.
 // import [컴포넌트 명] from [컴포넌트가 있는 파일경로];
-import Start from './Start';
+import Start2 from './Start2';
 import './hw.css'
 
 // 클래스형 컴포넌트는 이렇게 생겼습니다!
@@ -21,7 +21,7 @@ class App extends React.Component {
         // this 키워드를 통해 state에 접근할 수 있어요.
         return (
             <div className="App">
-                <Start name={this.state.name}/>
+                <Start2 name={this.state.name}/>
             </div>
         );
     }
