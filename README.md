@@ -174,7 +174,7 @@
    </details>
 </details>
 
-<details open>
+<details>
   <summary><b>2021.07.08</b></summary><br>
 
    1. nvm
@@ -213,11 +213,81 @@
 
 3. React Project 시작
 
-week-1 project를 아래의 명령어로 시작한다.
+   week-1 project를 아래의 명령어로 시작한다.
 
-```shell
+   ```shell
    $ yarn create react-app week-1
-```
+   ```
 
-week-1 내부 폴더를 살펴보면 첫번째로 node_modules를 확인할 수 있다. 이 폴더는 앞으로 yarn으로 설치할 수많은 패키지들이 담기는 장소이다.
+   week-1 내부 폴더를 살펴보면 첫번째로 node_modules를 확인할 수 있다. 이 폴더는 앞으로 yarn으로 설치할 수많은 패키지들이 담기는 장소이다.
+</details>
+
+<details open>
+  <summary><b>2021.07.09</b></summary><br>
+
+1. JSX
+
+   리엑트에서는 하나의 html 파일(public/index.html)만 존재한다. 이러한 React의 특징으로 인해 JSX 를 통해 요소를 생성하고 렌더링 시켜 view 를 구성한다. 이때 JSX는 src/App.js와 같이 함수 안에서 return 해주는 html 태그로 view를 꾸미는데, 이를 html in js 방식이라고 하며 이를 JSX라고 부른다. 
+
+   <br><br>
+   JSX 에러 살펴보기
+   
+   ```shell
+   // JSX 문법에 맞게 쓰이지 않음(태그 제대로 안닫힘)
+   SyntaxError: Unterminated JSX contents
+   
+   // 태그는 하나만 반환해야 함.
+   SyntaxError: Adjacent JSX elements must be wrapped in an enclosing tag.
+   ```
+   
+   <br>
+   jsx Basic Rules<br><br>
+
+   - jsx 에서 변수 or 자바스크립트 문법을 사용할 때 중괄호를 이용한다.
+
+      ```jsx
+      const dog_name = 'happii';
+      return (
+         <div>
+         hello {cat_name}
+         </div>
+      );
+      ```
+      <br>
+
+   - class를 선언할 때 class 대신 className을 사용한다.
+
+      ```jsx
+      <div className="App">
+      ```
+   <br>
+
+   - style
+
+      ```jsx
+      // 방법1) p 태그에서 style을 사용할때 중괄호로 묶어준다.
+      <p style={{color: 'blue'}}>Blue</p>
+
+
+      // 방법2) 변수로도 사용 가능하다.
+      const styles = {
+         color: 'blue'
+      };
+
+      return (
+         <div className="App">
+            <p style={styles}>orange</p>
+         </div>
+      );
+      ```
+
+2. Component
+
+   웹 페이지를 구성할 때 여러 요소로 나누어서 생각할 수 있는데 이 요소를 Componet라고 한다. Component는 함수형 Component/ Clsss형 Component로 나누어질 수 있으며, 이때 이 Component를 너무 크게 쪼개면 재사용성이 떨어진다.
+   <br>
+
+- State : Component의 데이터
+
+- Props : 부모 Component로 부터 받아온 데이터
+
 </details>
