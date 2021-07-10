@@ -1,4 +1,4 @@
-# React_Project_TIL
+# React_Project_모각코_TIL
 
 <details>
   <summary><b>2021.07.06</b></summary><br>
@@ -179,15 +179,15 @@
 
    1. nvm
       ```shell
-      // node 안정적인 버전 설치
+      # node 안정적인 버전 설치
       $ nvm install 12.18.4
-      // node 가장 최신 버전 설치
+      # node 가장 최신 버전 설치
       $ nvm install 14.13.0
 
-      // 노드가 잘 설치되었는지 확인
+      # 노드가 잘 설치되었는지 확인
       $ node -v
 
-      // 안정적인 버전으로 바꾸기
+      # 안정적인 버전으로 바꾸기
       $ nvm use 12.18.4
       ```
 
@@ -198,10 +198,10 @@
    - yarn 설치하기
 
       ```shell
-      // -g : 컴퓨터 전체에 설치
+      # -g : 컴퓨터 전체에 설치
       $ npm install -g yarn
 
-      // yarn 설치 확인
+      # yarn 설치 확인
       $ yarn -v
       ```
 
@@ -222,7 +222,7 @@
    week-1 내부 폴더를 살펴보면 첫번째로 node_modules를 확인할 수 있다. 이 폴더는 앞으로 yarn으로 설치할 수많은 패키지들이 담기는 장소이다.
 </details>
 
-<details open>
+<details>
   <summary><b>2021.07.09</b></summary><br>
 
 1. JSX
@@ -233,10 +233,10 @@
    JSX 에러 살펴보기
    
    ```shell
-   // JSX 문법에 맞게 쓰이지 않음(태그 제대로 안닫힘)
+   # JSX 문법에 맞게 쓰이지 않음(태그 제대로 안닫힘)
    SyntaxError: Unterminated JSX contents
    
-   // 태그는 하나만 반환해야 함.
+   # 태그는 하나만 반환해야 함.
    SyntaxError: Adjacent JSX elements must be wrapped in an enclosing tag.
    ```
    
@@ -286,9 +286,9 @@
    웹 페이지를 구성할 때 여러 요소로 나누어서 생각할 수 있는데 이 요소를 Componet라고 한다. Component는 함수형 Component/ Clsss형 Component로 나누어질 수 있으며, 이때 이 Component를 너무 크게 쪼개면 재사용성이 떨어진다.
    <br>
 
-- State : Component의 데이터
-
-- Props : 부모 Component로 부터 받아온 데이터
+   - State : Component의 데이터
+   
+   - Props : 부모 Component로 부터 받아온 데이터
 
 3. CSS
 
@@ -312,4 +312,110 @@
    <br>
    실습 내용은 아래와 같다.
    <p align="center"><img src="images/week-1.JPG"></p>
+</details>
+
+<details>
+  <summary><b>2021.07.10</b></summary><br>
+
+1. SASS, SCSS
+
+   SASS와 SCSS는 CSS를 더 편하게 쓸 수 있도록 도와준다. 이때 SCSS는 SASS의 3번째 버전 부터 추가된 것인데 CSS와 호환성이 개선되었다.
+
+   ```shell
+   # SASS 설치
+   $ yarn add node-sass@4.14.1 open-color sass-loader classnames
+   ```
+   <br>
+   SCSS의 주요 기능은 아래와 같다.<br>
+
+   - Nesting 가능
+   
+   - 클래스명, 글자 등 상위 요소 이어쓰기 가능(& 사용)
+   
+      ```scss
+     .App { 
+        &:hover{
+           background-color: bisque;
+        }  
+      }
+      ```
+     <br>
+
+   - 변수 사용 가능
+   
+      ```scss
+      $bgColor: #eee;
+     
+      .App {
+         background-color: #{$bgColor};      
+      }
+      ```
+     
+2. styled-components
+   
+      styled-components는 CSS-in-js 라이브러리 중 하나로 컴포넌트 스타일링 기법이다. 이는 class 이름을 고민하지 않아도 된다는 점, 컴포넌트에 스타일을 적기 때문에 직관적이라는 점이 특징이다.
+      <br>
+      설치 방법은 아래와 같다.<br>
+      
+      ```shell
+      $ yarn add styled-components
+      ```
+      <br>
+      사용 방법은 아래와 같다.
+      
+      ```javascript
+      import styled from 'styled-components';
+   
+      function App() {
+         return (
+            <div className="App">
+              {/* props로 bgColor를 줘볼까요! */}
+              <MyStyled bgColor를={"red"}>hello React!</MyStyled>
+            </div>
+         );
+      }
+   
+      // 백틴 내부에 기존 CSS문법 사용
+      const MyStyled = styled.div`
+         color: #fff;
+         &:hover{
+           background-color: #ddd;
+         }
+         // 변수 받아오기 가능, 삼항연산자 사용 가능 등 기초 js 문법이 사용 가능함.
+         background-color: ${(props) => (props.bgColor를 ? "red" : "purple")};
+      `;
+      ```
+</details>
+
+<details>
+  <summary><b>2021.07.11</b></summary><br>
+
+1. 가상 DOM
+
+   DOM은 html 단위 하나하나를 객체로 생각하는 모델이다.
+   즉 DOM은 트리 구조를 띄고 있다는 것인데, 트리 구조는 자식 노드에 수정이 발생하였을때 굉장한 비효율을 유발한다는 단점이 있다.
+   <br><br>
+   이때 사용하는 개념이 가상 DOM 이다. 이는 메모리 상에서 돌아가는 DOM으로 실제 수정이 일어난다고 가정하였을 때, 수정된 부분만 바꾼다는 점에서 처리가 매우 간결하다.(Facebook 에서 가상돔 사용)
+   이러한 형식으로 돔을 그리고, 갈아끼우는 것을 <code>렌더링(처음 진입 시), 리렌더링(데이터 수정 시)</code>이라고 한다.
+
+<br>
+   
+2. 라이프 사이클
+
+   컴포넌트의 <code>라이프 사이클</code>이란, 컴포넌트가 렌더링을 준비하는 순간부터, 페이지가 사라질 때 까지의 순간을 말한다.
+   <br>
+   컴포넌트의 상태는 생성 → 수정 → 제거로 구분지을 수 있는데, 생성은 처음 컴포넌트를 불러오는 단계를 말한다. 
+   이후 수정은 사용자로 인하여 데이터에 변동이 일어났을때, 부모 컴포넌트에 영향을 받았을 때(부모 컴포넌트 렌더링) 발생한다.
+   즉, 아래 네가지 경우에 수정이 발생한다.
+   
+   - props에 변동
+   
+   - state가 변동
+   
+   - 부모 컴포넌트 update
+   
+   - forceUpdate()
+   
+   <br>
+   마지막으로 제거 단계는 페이지를 이동 or 사용자로 인해 컴포넌트가 화면에서 사라지는 단계를 말한다.
 </details>
