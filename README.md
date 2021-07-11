@@ -418,4 +418,40 @@
    
    <br>
    마지막으로 제거 단계는 페이지를 이동 or 사용자로 인해 컴포넌트가 화면에서 사라지는 단계를 말한다.
+
+   <br><br>
+   <b>📕 라이프 사이클 함수</b><br>
+   클래스형 컴포넌트에서만 사용할 수 있다.
+   
+   - constructor() : 생성자 함수, 컴포넌트 생성시 가장 처음 호출됨
+   - render() : 컴포넌트 모양 정의
+   - componentDidMount() : 리렌더링 할때는 실행되지 X, 첫번째 렌더링을 마친 후에만 실행된다.
+   - componentDidUpdate(prevProps,  e, snapshot) : 리렌더링 후 실행되며, 업데이트 되기 전 props와 state를 저장하고 있다.
+   - componentWillUnmount() : 컨포넌트가 DOM에서 제거될 때 실행
+</details>
+
+<details>
+  <summary><b>2021.07.12</b></summary><br>
+
+1. Ref
+
+   돔이 그려지기 이전에, 페이지의 어떤 내용을 가져오기 위해서는 react 요소에서 가져올 수 있다. React 요소를 가지고 오는 방법은 아래와 같다.(createRef() 사용)
+   
+   ```javascript
+   // constructor() 아래 문장 작성
+   class App extends React.Component {
+     constructor(props) {
+       super(props);
+       this.text = React.createRef();
+     }
+     
+     render() {
+       return (
+         <div className="App">
+             <input type="text" ref={this.text} />
+         </div>
+       );
+     }
+   }
+   ```
 </details>
