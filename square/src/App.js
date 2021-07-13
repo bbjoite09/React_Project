@@ -81,8 +81,6 @@ class App extends React.Component {
     }
 
     render() {
-        const square_count = Array.from({length: this.state.count}, (v, i) => (i));
-        console.log(square_count);
         return (
             <div className="App">
                 <Square/>
