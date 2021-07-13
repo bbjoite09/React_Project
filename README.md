@@ -314,6 +314,8 @@
    <p align="center"><img src="images/week-1.JPG"></p>
 </details>
 
+---
+
 <details>
   <summary><b>2021.07.10</b></summary><br>
 
@@ -455,3 +457,106 @@
    }
    ```
 </details>
+
+<details>
+  <summary><b>2021.07.13</b></summary><br>
+
+1. State 관리
+
+   데이터는 단방향적 흐름을 갖는다.(부모 -> 자식 방향으로만 넘겨줌)
+   <br><br><br>
+   
+
+   <b>a. 클래스형 컴포넌트에서 state 관리(setState() 사용)</b>
+   
+   setState()를 이용하여 state의 상태를 변경해줄 수 있다.<br>
+   class App 내부 this.state 딕셔너리에 count = 3으로 정의되어있다고 가정하자.
+   함수 addSquare가 실행되었을 때 count를 1씩 증가시키기 위해서는 아래와 같이 작성할 수 있다.
+   
+   ```javascript
+   constructor(props){
+       super(props);
+   
+       this.state = {
+         count: 3,
+       }
+   }
+   
+   addSquare = () => {
+       this.setState({count: this.state.count + 1});
+       console.log('add')
+   }
+   ```
+   <br><br>
+
+   ++ 배열 초기화 하기<br>
+   
+   ```javascript
+   Array.from({length: 3}, (v, i) => (i));  // [0, 1, 2]로 초기화
+   ```
+   <br><br>
+   <b>b. 함수형 컴포넌트에서 state 관리(useState() 사용)</b><br><br>
+   기존 함수형 컴포넌트는 dump components로 state를 사용할 수 없었다.
+   이때 react hooks를 사용하면 state를 가질 수 있다.
+   <br><br>
+   Square.js에서 <code>const Square = (props) => {...}</code> 내부에 아래와 같이 선언하여 state를 관리할 수 있다.
+
+   ```javascript
+   // const [state로 쓸 변수, 바꿔줄 함수] = React.useState(state로 사용하는 변수 초기화);
+    const [count, setCount] = React.useState(3);
+   ```
+   <br>
+   즉, count라는 변수를 setCount()라는 함수로 관리한다는 것인데, 실제 사용하는 방법은 아래와 같다.
+
+   ```javascript
+    const addSquare = () => {
+        setCount(count + 1);
+    }
+   ```
+
+   <br>
+   <code>const [count, setCount] = React.useState(3);</code>를 선언한 이후부터 count와 setCount를 사용할 수 있다.
+</details>
+<br><br>
+
+## ⚙ 프로젝트 생성 과정
+
+1. 새 CRA 만들기
+
+   ```shell
+   $ yarn create react-app [프로젝트명]
+   ```
+   <br>
+2. index.js에서 <React.StrictMode> 지우기(console 여러개 뜨지 않도록!)
+   
+   ```javascript
+   ReactDOM.render(
+       <App />,
+       document.getElementById('root')
+   );
+   ```
+   <br>
+3. App.js를 class형 컴포넌트로 수정
+
+   ```javascript
+   import React from 'react';
+   
+   class App extends React.Component {
+     constructor(props){
+       super(props);
+   
+       this.state = {}
+     }
+     
+     render(){
+       return (
+         <div className="App">
+           
+         </div>
+       );
+     }
+   }
+   
+   export default App;
+   ```
+<br>
