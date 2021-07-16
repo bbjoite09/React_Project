@@ -28,10 +28,10 @@ class App extends React.Component {
                     {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
                     <BucketList list={this.state.list}/>
                 </Container>
-                <Container>
+                <Input>
                     <input type="text" ref={this.text}/>
                     <button>추가하기</button>
-                </Container>
+                </Input>
             </div>
         );
     }
