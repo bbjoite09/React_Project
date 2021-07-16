@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createRef} from 'react';
 
 /* class형 컴포넌트-----------------------------------------------------------
 class App extends React.Component {
@@ -63,6 +63,23 @@ class App extends React.Component {
         this.state = {
             count: 3,
         }
+
+        this.div = React.createRef();
+    }
+
+    hoverEvent = (e) => {
+        console.log(e);
+        console.log(e.target);
+
+        e.target.style.background = "#eee";
+    }
+
+    componentDidMount() {
+        this.div.current.addEventListener("mouseover", this.hoverEvent);
+    }
+
+    componentWillUnmount() {
+        this.div.current.removeEventListener("mouseover", this.hoverEvent);
     }
 
     addSquare = () => {
@@ -82,7 +99,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="App" ref={this.div}>
                 <Square/>
             </div>
         );
