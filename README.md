@@ -313,8 +313,7 @@
    실습 내용은 아래와 같다.
    <p align="center"><img src="images/week-1.JPG"></p>
 </details>
-
----
+<br>
 
 <details>
   <summary><b>2021.07.10</b></summary><br>
@@ -456,6 +455,10 @@
      }
    }
    ```
+   <br>
+   Ref와 Dom 관련한 자세한 사항은 <a href="https://ko.reactjs.org/docs/refs-and-the-dom.html">
+   React 공식 문서</a>에서 확인할 수 있다.
+
 </details>
 
 <details>
@@ -517,6 +520,52 @@
    <br>
    <code>const [count, setCount] = React.useState(3);</code>를 선언한 이후부터 count와 setCount를 사용할 수 있다.
 </details>
+
+
+<details>
+  <summary><b>2021.07.16</b></summary><br>
+
+   1. Event Listener
+   
+      event를 많이 알고 있으면 생동감 있는 웹사이트를 제작할 수 있다.
+      keyboard event, mouse event 등 다양한 Event Lister를 <a href="https://developer.mozilla.org/ko/docs/Web/Events">
+      여기</a>에서 확인할 수 있다.
+      <br><br> 이벤트 리스너는 등록해놓은 돔 객체가 사라질 때, 더이상 필요 없어지기 때문에
+      componentWillUnMount에서 Event Lister 구독을 해제해 줘야한다.
+      <br><br>
+   
+      <i><b>Event Listener 구독 순서<br></b></i><br>
+      a. Ref 잡기(DOM에 접근하기 위하여)<br>
+      b. Event 정하기<br>
+      c. 함수 만들기(ex. mouseover 이벤트가 일어났을 때 어떤 행동을 해주겠다를 함수로 표현)<br>
+      d. componentDidMount()에 등록<br>
+      e. 컴포넌트가 사라졌을 때 구독 해제하기 위하여 componentWillUnmount()에서 처리
+   
+      ```javascript
+      // c. 함수 만들기 - hoverEvent 함수 생성
+      hoverEvent = (e) => {
+              console.log(e);
+              console.log(e.target);
+      
+              e.target.style.background = "#eee";
+          }
+      
+      // d. componentDidMount()에 등록
+      componentDidMount() {
+           this.div.current.addEventListener("mouseover", this.hoverEvent);
+      }
+      
+      // e. componentWillUnmount()에서 구독 해제
+      componentWillUnmount() {
+           this.div.current.removeEventListener("mouseover", this.hoverEvent);
+      }
+      ```
+
+   
+</details> 
+
+
+
 <br><br>
 
 ## ⚙ 프로젝트 생성 과정
