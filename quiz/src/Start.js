@@ -1,4 +1,5 @@
 import React from "react";
+import img from "./sparta.png";
 
 const Start = (props) => {
     return (
