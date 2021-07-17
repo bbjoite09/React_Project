@@ -313,6 +313,7 @@
    실습 내용은 아래와 같다.
    <p align="center"><img src="images/week-1.JPG"></p>
 </details>
+<br>
 
 <details>
   <summary><b>2021.07.10</b></summary><br>
@@ -454,4 +455,157 @@
      }
    }
    ```
+   <br>
+   Ref와 Dom 관련한 자세한 사항은 <a href="https://ko.reactjs.org/docs/refs-and-the-dom.html">
+   React 공식 문서</a>에서 확인할 수 있다.
+
 </details>
+
+<details>
+  <summary><b>2021.07.13</b></summary><br>
+
+1. State 관리
+
+   데이터는 단방향적 흐름을 갖는다.(부모 -> 자식 방향으로만 넘겨줌)
+   <br><br><br>
+   
+
+   <b>a. 클래스형 컴포넌트에서 state 관리(setState() 사용)</b>
+   
+   setState()를 이용하여 state의 상태를 변경해줄 수 있다.<br>
+   class App 내부 this.state 딕셔너리에 count = 3으로 정의되어있다고 가정하자.
+   함수 addSquare가 실행되었을 때 count를 1씩 증가시키기 위해서는 아래와 같이 작성할 수 있다.
+   
+   ```javascript
+   constructor(props){
+       super(props);
+   
+       this.state = {
+         count: 3,
+       }
+   }
+   
+   addSquare = () => {
+       this.setState({count: this.state.count + 1});
+       console.log('add')
+   }
+   ```
+   <br><br>
+
+   ++ 배열 초기화 하기<br>
+   
+   ```javascript
+   Array.from({length: 3}, (v, i) => (i));  // [0, 1, 2]로 초기화
+   ```
+   <br><br>
+   <b>b. 함수형 컴포넌트에서 state 관리(useState() 사용)</b><br><br>
+   기존 함수형 컴포넌트는 dump components로 state를 사용할 수 없었다.
+   이때 react hooks를 사용하면 state를 가질 수 있다.
+   <br><br>
+   Square.js에서 <code>const Square = (props) => {...}</code> 내부에 아래와 같이 선언하여 state를 관리할 수 있다.
+
+   ```javascript
+   // const [state로 쓸 변수, 바꿔줄 함수] = React.useState(state로 사용하는 변수 초기화);
+    const [count, setCount] = React.useState(3);
+   ```
+   <br>
+   즉, count라는 변수를 setCount()라는 함수로 관리한다는 것인데, 실제 사용하는 방법은 아래와 같다.
+
+   ```javascript
+    const addSquare = () => {
+        setCount(count + 1);
+    }
+   ```
+
+   <br>
+   <code>const [count, setCount] = React.useState(3);</code>를 선언한 이후부터 count와 setCount를 사용할 수 있다.
+</details>
+
+
+<details>
+  <summary><b>2021.07.16</b></summary><br>
+
+   1. Event Listener
+   
+      event를 많이 알고 있으면 생동감 있는 웹사이트를 제작할 수 있다.
+      keyboard event, mouse event 등 다양한 Event Lister를 <a href="https://developer.mozilla.org/ko/docs/Web/Events">
+      여기</a>에서 확인할 수 있다.
+      <br><br> 이벤트 리스너는 등록해놓은 돔 객체가 사라질 때, 더이상 필요 없어지기 때문에
+      componentWillUnMount에서 Event Lister 구독을 해제해 줘야한다.
+      <br><br>
+   
+      <i><b>Event Listener 구독 순서<br></b></i><br>
+      a. Ref 잡기(DOM에 접근하기 위하여)<br>
+      b. Event 정하기<br>
+      c. 함수 만들기(ex. mouseover 이벤트가 일어났을 때 어떤 행동을 해주겠다를 함수로 표현)<br>
+      d. componentDidMount()에 등록<br>
+      e. 컴포넌트가 사라졌을 때 구독 해제하기 위하여 componentWillUnmount()에서 처리
+   
+      ```javascript
+      // c. 함수 만들기 - hoverEvent 함수 생성
+      hoverEvent = (e) => {
+              console.log(e);
+              console.log(e.target);
+      
+              e.target.style.background = "#eee";
+          }
+      
+      // d. componentDidMount()에 등록
+      componentDidMount() {
+           this.div.current.addEventListener("mouseover", this.hoverEvent);
+      }
+      
+      // e. componentWillUnmount()에서 구독 해제
+      componentWillUnmount() {
+           this.div.current.removeEventListener("mouseover", this.hoverEvent);
+      }
+      ```
+
+   
+</details> 
+
+
+
+<br><br>
+
+## ⚙ 프로젝트 생성 과정
+
+1. 새 CRA 만들기
+
+   ```shell
+   $ yarn create react-app [프로젝트명]
+   ```
+   <br>
+2. index.js에서 <React.StrictMode> 지우기(console 여러개 뜨지 않도록!)
+   
+   ```javascript
+   ReactDOM.render(
+       <App />,
+       document.getElementById('root')
+   );
+   ```
+   <br>
+3. App.js를 class형 컴포넌트로 수정
+
+   ```javascript
+   import React from 'react';
+   
+   class App extends React.Component {
+     constructor(props){
+       super(props);
+   
+       this.state = {}
+     }
+     
+     render(){
+       return (
+         <div className="App">
+           
+         </div>
+       );
+     }
+   }
+   
+   export default App;
+   ```
+<br>
