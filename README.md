@@ -602,8 +602,7 @@
    ```
    <br><br>
   
-    <details>
-        <summary><b><i>⭐ 라우팅 처리 절차 : < Link/ > 사용</i></b></summary><br>
+<b><i>⭐ 라우팅 처리 절차 : < Link/ > 사용</i></b></summary><br>
   
   1. index.js에 BrowserRouter 적용하기
           
@@ -619,7 +618,8 @@
      <br>
       
   2. 세부 화면 만들기
-<br>
+
+
   3. App.js에서 Route 적용하기
      
       ```javascript
@@ -657,28 +657,26 @@
         <Link to="주소">[텍스트]</Link>
         ```
      <br>
-  </details>
-  <br>
-  ✔ 추가로 withRouter를 추가해 함수를 통한 라우팅도 가능하다.
-    <br>
 
-    ```javascript
-    // App.js - import 부분에 추가
-    import { withRouter } from "react-router";
+      ✔ 추가로 withRouter를 추가해 함수를 통한 라우팅도 가능하다.
     
-    // App.js - 내보내는 부분에서 withRouter로 감싸기
-    export default withRouter(App);
-    ```
-    
-    <br> App.js에서 이전페이지로 이동하는 버튼을 다음과 같이 추가할 수 있다.
-    
-    ```javascript
-    <button onClick={()=>{
-      // goBack()은 뒤로가기 예요.
-      this.props.history.goBack();
-    }}>뒤로가기
-    </button>
-    ```
+        ```javascript
+        // App.js - import 부분에 추가
+        import { withRouter } from "react-router";
+        
+        // App.js - 내보내는 부분에서 withRouter로 감싸기
+        export default withRouter(App);
+        ```
+        
+        <br> App.js에서 이전페이지로 이동하는 버튼을 다음과 같이 추가할 수 있다.
+        
+        ```javascript
+        <button onClick={()=>{
+          // goBack()은 뒤로가기 예요.
+          this.props.history.goBack();
+        }}>뒤로가기
+        </button>
+        ```
     
 </details>
 
