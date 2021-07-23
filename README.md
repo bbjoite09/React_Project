@@ -468,14 +468,12 @@
 
    데이터는 단방향적 흐름을 갖는다.(부모 -> 자식 방향으로만 넘겨줌)
    <br><br><br>
-   
-
-   <b>a. 클래스형 컴포넌트에서 state 관리(setState() 사용)</b>
-   
-   setState()를 이용하여 state의 상태를 변경해줄 수 있다.<br>
-   class App 내부 this.state 딕셔너리에 count = 3으로 정의되어있다고 가정하자.
-   함수 addSquare가 실행되었을 때 count를 1씩 증가시키기 위해서는 아래와 같이 작성할 수 있다.
-   
+       <b>a. 클래스형 컴포넌트에서 state 관리(setState() 사용)</b>
+       <br>
+       setState()를 이용하여 state의 상태를 변경해줄 수 있다.<br>
+       class App 내부 this.state 딕셔너리에 count = 3으로 정의되어있다고 가정하자.
+       함수 addSquare가 실행되었을 때 count를 1씩 증가시키기 위해서는 아래와 같이 작성할 수 있다.
+       
    ```javascript
    constructor(props){
        super(props);
@@ -563,6 +561,126 @@
 
    
 </details> 
+
+<details>
+  <summary><b>2021.07.21</b></summary><br>
+    
+> route_ex
+
+<br>
+1. 라우팅
+
+- SPA(Single Page Application) : 서버에서 주는 html이 1개인 애플리케이션
+
+   html을 하나만 준다는 점에서 사용성을 증가시킨다.
+   (SPA 방식이 아닌) 페이지를 이동할 때마다 서버에서 주는 html로 화면을 바꾸는 방식의 경우 상태 유지가 어려우며, 불필요한 부분까지 불러온다는 비효율을 초래한다.
+   <br>한편, SPA 방식은 처음에 모든 컴포넌트를 받아와야하기 때문에 도입 시 로딩이 느리다는 단점을 가지고 있다.
+  <br>
+  
+
+- 라우팅 : 브라우저 주소에 따라 다른 페이지를 보여주는 것
+
+   SPA에서 주소를 옮기는 방법? ➜ 라우팅 라이브러리(react-router-dom)를 이용하여 주소를 옮길 수 있다.
+   
+   ```shell
+   # react-router-dom 설치
+   $ yarn add react-router-dom
+   ```  
+   
+  <br>
+   react-route-dom <a href="https://reactrouter.com/web/example/basic">
+  공식 문서</a>를 확인해 보면, 아래와 같이 import 해줌으로써 react-route-dom을 쉽게 이용할 수 있다.
+   
+  ```javascript
+   import React from "react";
+   import {
+     BrowserRouter as Router,
+     Switch,
+     Route,
+     Link
+   } from "react-router-dom";
+   ```
+   <br><br>
+  
+    <details>
+        <summary><b><i>⭐ 라우팅 처리 절차 : < Link/ > 사용</i></b></summary><br>
+  
+  1. index.js에 BrowserRouter 적용하기
+          
+      ```javascript
+      ReactDOM.render(
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>,
+        document.getElementById("root")
+      );
+      ```
+         
+     <br>
+      
+  2. 세부 화면 만들기
+<br>
+  3. App.js에서 Route 적용하기
+     
+      ```javascript
+      // 넘겨줄 props가 없을 때
+      <Route path="주소[/home 처럼 /와 주소를 적어요]" component={[보여줄 컴포넌트]}/>
+      
+      // 넘겨줄 props가 있을 때
+      <Route path="주소[/home 처럼 /와 주소를 적어요]" render={(props) => (<BucketList list={this.state.list} />)} />
+      ```
+       
+      <br>
+  4. exact 적용하기 - 중복 주소 처리
+       
+      ```javascript
+      <Route path="/" exact component={Home} />
+      ```
+          
+      <br>
+  5. URL 파라미터 사용하기
+       
+      ```javascript
+      // 파라미터 주기 - APP.js
+      <Route path="/cat/:cat_name" component={Cat}/>
+      
+      // 파라미터 사용하기 - Cat.js
+      const Cat = (props) => {
+          console.log(props.match);
+          return(<div>내 고양이 이름은 {props.match.params.cat_name}에요!</div>)
+      }
+      ```
+      
+      <br>
+  6. 링크 이동 시키기
+        ```javascript
+        <Link to="주소">[텍스트]</Link>
+        ```
+     <br>
+  </details>
+  <br>
+  ✔ 추가로 withRouter를 추가해 함수를 통한 라우팅도 가능하다.
+    <br>
+
+    ```javascript
+    // App.js - import 부분에 추가
+    import { withRouter } from "react-router";
+    
+    // App.js - 내보내는 부분에서 withRouter로 감싸기
+    export default withRouter(App);
+    ```
+    
+    <br> App.js에서 이전페이지로 이동하는 버튼을 다음과 같이 추가할 수 있다.
+    
+    ```javascript
+    <button onClick={()=>{
+      // goBack()은 뒤로가기 예요.
+      this.props.history.goBack();
+    }}>뒤로가기
+    </button>
+    ```
+    
+</details>
 
 
 
