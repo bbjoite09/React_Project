@@ -32,11 +32,10 @@ export default function reducer(state = initialState, action = {}) {
 
         default:
             return state;
-        // do reducer stuff
     }
 }
 
 
-export function removeWidget(widget) {
-    return {type: REMOVE, widget};
-}
+// export function removeWidget(widget) {
+//     return {type: REMOVE, widget};
+// }
