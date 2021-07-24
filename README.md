@@ -561,7 +561,7 @@
 
    
 </details> 
-
+<br>
 <details>
   <summary><b>2021.07.21</b></summary><br>
     
@@ -589,7 +589,7 @@
    
   <br>
    react-route-dom <a href="https://reactrouter.com/web/example/basic">
-  공식 문서</a>를 확인해 보면, 아래와 같이 import 해줌으로써 react-route-dom을 쉽게 이용할 수 있다.
+  공식 문서</a>를 확인해 보면, 아래와 같이 import 해줌으로써 react-route-dom을 쉽게 이용할 수 있다.<br>
    
   ```javascript
    import React from "react";
@@ -602,7 +602,7 @@
    ```
    <br><br>
   
-<b><i>⭐ 라우팅 처리 절차 : < Link/ > 사용</i></b></summary><br>
+<b><i>⭐ 라우팅 처리 절차 : < Link/ > 사용</i></b><br>
   
   1. index.js에 BrowserRouter 적용하기
           
@@ -652,34 +652,116 @@
       ```
       
       <br>
-  6. 링크 이동 시키기
-        ```javascript
-        <Link to="주소">[텍스트]</Link>
-        ```
-     <br>
+6. 링크 이동 시키기
+    ```javascript
+    <Link to="주소">[텍스트]</Link>
+    ```
+ <br>
 
-      ✔ 추가로 withRouter를 추가해 함수를 통한 라우팅도 가능하다.
+✔ 추가로 withRouter를 추가해 함수를 통한 라우팅도 가능하다.
+
+```javascript
+// App.js - import 부분에 추가
+import { withRouter } from "react-router";
+
+// App.js - 내보내는 부분에서 withRouter로 감싸기
+export default withRouter(App);
+```
+
+<br> App.js에서 이전페이지로 이동하는 버튼을 다음과 같이 추가할 수 있다.
+
+```javascript
+<button onClick={()=>{
+  // goBack()은 뒤로가기 예요.
+  this.props.h
     
-        ```javascript
-        // App.js - import 부분에 추가
-        import { withRouter } from "react-router";
+    istory.goBack();
+}}>뒤로가기
+</button>
+```
+
+<br>
+
+- Switch
+
+    > bucket_list/App.js
+    
+    사용자 입장에서 잘못된 주소를 입력하였을 때 별도의 안내가 없다면, 페이지가 없다고 생각하기 쉽다.
+    이를 위하여 다른 경로를 입력하였을 때 안내를 위한 페이지로 분기하도록 하는 것은 웹서비스에서 중요한 부분이다.
+    그러나 이 경우에 if 문을 사용하기는 적절하지 않다. 이럴 때 Switch 를 사용할 수 있다.
+    
+    ```javascript
+    <Switch>
+        // 전달 인자가 있을 때 라우팅
+        <Route path="/" exact render={(props)=><BucketList history={this.props.history} list={this.state.list} />}/>
+        // 전달 인자가 없을 때 라우팅
+        <Route path="/details" component={Details}></Route>
         
-        // App.js - 내보내는 부분에서 withRouter로 감싸기
-        export default withRouter(App);
-        ```
-        
-        <br> App.js에서 이전페이지로 이동하는 버튼을 다음과 같이 추가할 수 있다.
-        
-        ```javascript
-        <button onClick={()=>{
-          // goBack()은 뒤로가기 예요.
-          this.props.history.goBack();
-        }}>뒤로가기
-        </button>
-        ```
+        // 스위치 문 내부에서 경로를 지정하지 않은 Route
+        // => 위에서 route한 주소 외에 모든 주소는 이 문장에서 정의한 페이지로 이동한다.
+        <Route component={NotFound}/>
+    </Switch>
+    ```
+
+
     
 </details>
 
+<details>
+    <summary><b>2021.07.24</b></summary><br>
+<b>📄 SHAP_STORY PROJECT</b>
+
+- XD 상세 페이지 확정(마이페이지, 질문 게시판, 질문하기 페이지 디자인 확정)
+- 인터랙션 추가 및 프로토타입 확정
+    
+    <br>
+    페이지에 대한 이미지 예시는 아래와 같다.
+    
+    1. 마이페이지 
+    <p align="center"><img src="images/mypage.JPG"></p>
+  
+    2. 질문 게시판 
+    <p align="center"><img src="images/question_board.JPG"></p>
+  
+    3. 질문하기 페이지 
+    <p align="center"><img src="images/question.JPG"></p>
+<br><br>
+
+
+1. 리덕스
+    
+    리덕스는 상태관리 관련한 라이브러리이다. 이때 상태 관리란 컴포넌트의 데이터를 관리하는 것을 말한다. 
+   공식문서는 <a href="https://ko.redux.js.org/introduction/getting-started/">여기</a>에서 확인할 수 있다.
+    
+    ```shell
+    $ yarn add redux react-redux
+    ```
+   
+    <br>
+    이는 부모-자식 관계와 동떨어진 어떤 위치에 데이터를 몰아 넣고,
+    전역으로 사용할 수 있다.(전역으로 저장해 놓은 데이터 모음을 아무데서나 참조 가능하다.)
+
+    <br><br>
+    <b><i>⭐ 리덕스 기본 용어</i></b><br><br>
+   
+    - State : 리덕스에서 저장하고 있는 상태값(딕셔너리 형태)
+    - Action : 데이터에 수정이(상태 변화) 필요할 때 발생.
+    - ActionCreator : 액션을 만들기 위한 함수
+    - Reducer : 리덕스에 저장된 상태를 변경하는 함수<br>
+      (컴포넌트들이 데이터를 바꾸고 싶은 순간 Action 생성 함수 호출함 ➜
+      Action 반환 ➜ Reducer이 지금 리덕스에 들어가 있는 현재 상태의 액션 객체를 받음 ➜ 새로운 데이터를 만듬 ➜ return)
+      <br>`+ 리듀서는 순수한 함수여야 한다.` 
+    - Store : 우리가 데이터를 볼 수 있게 만들어줌. 
+      리덕스를 프로젝트에 적용하기 위해 생성(딕셔너리 형태)
+        
+        1. 단일 스토어 규칙 - 한 프로젝트에 하나의 store
+      
+        2. store의 state는 action으로만 변경 가능함.</b>)
+       
+    - dispatch : 액션을 발생시키는 역할. `dispatch(action);`와 같이 호출할 수 있다.
+    
+
+</details>
 
 
 <br><br>
