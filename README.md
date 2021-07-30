@@ -715,7 +715,7 @@ export default withRouter(App);
 - 인터랙션 추가 및 프로토타입 확정
     
     <br>
-    페이지에 대한 이미지 예시는 아래와 같다.
+    페이지에 대한 이미지 예시는 아래와 같다.<br>
     
     1. 마이페이지 
     <p align="center"><img src="images/mypage.JPG"></p>
@@ -760,10 +760,49 @@ export default withRouter(App);
        
     - dispatch : 액션을 발생시키는 역할. `dispatch(action);`와 같이 호출할 수 있다.
     
-
 </details>
 
+<details>
+    <summary><b>2021.07.25</b></summary><br>
 
+1. 리덕스를 통한 리액트 상태관리
+    자식 컴포넌트는 부모 컴포넌트의 state를 조작할 수 없으며(단방향적 흐름), 다른 하위 노드에 데이터를 전달하는 것 역시 불가능하다. 
+   그렇기 때문에 리덕스가 필요한데, `리덕스 상태관리 흐름`은 아래와 같다.<br><br>
+   
+    1. 리덕스 Store을 컴포넌트에 연결한다.
+    2. 컴포넌트에서 상태 변화가 필요할 때 Action을 호출한다.
+    3. Reducer을 통해서 새로운 상태 값을 만든다.
+    4. 새 상태 값을 Store에 저장한다.
+    5. 컴포넌트는 새로운 상태 값을 받아온다.(리렌더링 필요 - ∵ props를 통해 다시 받아와서)
+
+<br><br>
+
+2. 리덕스 적용<br><br>
+    - 덕스 구조 : 리덕스를 사용할때 보통 action, actionCreator, reducer을 분리해서 작성한다.(기능으로 묶어서 작성)
+    
+        <br>
+    - 모듈 만들기
+      
+        1. src> redux 폴더> moduels 폴더 생성
+        2. Action : 액션 정의
+        3. initialState : 초기 상태 값 정의
+        4. Action Creator : 액션 생성 함수 작성
+        5. Reducer : 리듀서 작성
+        6. Store : redux 폴더 하위에 configStore.js 파일 생성 후 스토어 만들기
+    
+</details>
+<details>
+    <summary><b>2021.07.29</b></summary><br>
+    <p align="center"><img src="images/flow.JPG"></p>
+    전체 플로우를 수정하고, 강의 페이지 목차를 제작하였다.<br>
+    추가로 강의 페이지 컨텐츠 기획을 진행하였다. 내용은 아래와 같다.
+    <br>
+
+- 기초학습 ➜ 엔트리를 활용한 미로찾기 게임
+- 심화학습 ➜ 초소형 컴퓨터 마이크로 비트를 이용한 알라딘의 요술램프, 배짱이 기타 만들기(makecode.microbit.org 사용)<br>
+    이때 페이지 상단에서는 요술램프를 흔드는 모션을 취할 때 표정이 변하는 램프, 줄을 클릭하면 소리가 재생되는 기타를 미리 동작해 볼 수 있다.
+
+</details>
 <br><br>
 
 ## ⚙ 프로젝트 생성 과정
