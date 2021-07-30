@@ -791,7 +791,18 @@ export default withRouter(App);
         6. Store : redux 폴더 하위에 configStore.js 파일 생성 후 스토어 만들기
     
 </details>
+<details>
+    <summary><b>2021.07.29</b></summary><br>
+    <p align="center"><img src="images/flow.JPG"></p>
+    전체 플로우를 수정하고, 강의 페이지 목차를 제작하였다.<br>
+    추가로 강의 페이지 컨텐츠 기획을 진행하였다. 내용은 아래와 같다.
+    <br>
 
+- 기초학습 ➜ 엔트리를 활용한 미로찾기 게임
+- 심화학습 ➜ 초소형 컴퓨터 마이크로 비트를 이용한 알라딘의 요술램프, 배짱이 기타 만들기(makecode.microbit.org 사용)<br>
+    이때 페이지 상단에서는 요술램프를 흔드는 모션을 취할 때 표정이 변하는 램프, 줄을 클릭하면 소리가 재생되는 기타를 미리 동작해 볼 수 있다.
+
+</details>
 <br><br>
 
 ## ⚙ 프로젝트 생성 과정
