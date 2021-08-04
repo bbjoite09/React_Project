@@ -794,9 +794,9 @@ export default withRouter(App);
 <details>
     <summary><b>2021.07.29</b></summary><br>
     <p align="center"><img src="images/flow.JPG"></p>
-    전체 플로우를 수정하고, 강의 페이지 목차를 제작하였다.<br>
+    전체 플로우를 수정하고, 강의 페이지 목차 페이지를 제작하였다.<br>
     추가로 강의 페이지 컨텐츠 기획을 진행하였다. 내용은 아래와 같다.
-    <br>
+    <br><br>
 
 - 기초학습 ➜ 엔트리를 활용한 미로찾기 게임
 - 심화학습 ➜ 초소형 컴퓨터 마이크로 비트를 이용한 알라딘의 요술램프, 배짱이 기타 만들기(makecode.microbit.org 사용)<br>
