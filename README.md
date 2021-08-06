@@ -803,6 +803,16 @@ export default withRouter(App);
     이때 페이지 상단에서는 요술램프를 흔드는 모션을 취할 때 표정이 변하는 램프, 줄을 클릭하면 소리가 재생되는 기타를 미리 동작해 볼 수 있다.
 
 </details>
+
+<details>
+  <summary><b>2021.07.21</b></summary><br>
+- 페이지 디자인 수정 및 exports
+- Event Lister 활용한 컨텐츠 미리보기 논의
+
+<br><br>
+
+- 추후일정(Event Lister 이용해서 알라딘의 요술램프 모션 만들기)
+</details>
 <br><br>
 
 ## ⚙ 프로젝트 생성 과정
