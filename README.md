@@ -792,11 +792,11 @@ export default withRouter(App);
     
 </details>
 <details>
-    <summary><b>2021.07.29</b></summary><br>
+    <summary><b>2021.07.28</b></summary><br>
     <p align="center"><img src="images/flow.JPG"></p>
-    전체 플로우를 수정하고, 강의 페이지 목차를 제작하였다.<br>
+    전체 플로우를 수정하고, 강의 페이지 목차 페이지를 제작하였다.<br>
     추가로 강의 페이지 컨텐츠 기획을 진행하였다. 내용은 아래와 같다.
-    <br>
+    <br><br>
 
 - 기초학습 ➜ 엔트리를 활용한 미로찾기 게임
 - 심화학습 ➜ 초소형 컴퓨터 마이크로 비트를 이용한 알라딘의 요술램프, 배짱이 기타 만들기(makecode.microbit.org 사용)<br>
@@ -805,13 +805,26 @@ export default withRouter(App);
 </details>
 
 <details>
-  <summary><b>2021.07.21</b></summary><br>
+  <summary><b>2021.08.04</b></summary><br>
+
 - 페이지 디자인 수정 및 exports
 - Event Lister 활용한 컨텐츠 미리보기 논의
-
 <br><br>
 
-- 추후일정(Event Lister 이용해서 알라딘의 요술램프 모션 만들기)
+- 추후일정(Event Listener 이용해서 알라딘의 요술램프 모션 만들기)
+</details>
+
+<details>
+  <summary><b>2021.08.07</b></summary><br>
+
+- 오류사항 수정
+- 라우팅 관련 논의
+- Event Listener 공부
+</details>
+
+<details>
+  <summary><b>2021.08.09</b></summary><br>
+
 </details>
 <br><br>
 

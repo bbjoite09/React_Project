@@ -2,16 +2,17 @@
 import React from "react";
 import styled from "styled-components";
 
+import {useSelector, useDispatch} from "react-redux";
+
 const BucketList = (props) => {
-  console.log(props);
-  const my_lists = props.list;
+  const bucket_list = useSelector(state => state.bucket.list);
 
   return (
     <ListStyle>
-      {my_lists.map((list, index) => {
+      {bucket_list.map((list, index) => {
         return (
           <ItemStyle className="list_item" key={index} onClick={() => {
-            props.history.push('/details')}}>
+            props.history.push('/details/'+index)}}>
             {list}
           </ItemStyle>
         );
