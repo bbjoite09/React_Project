@@ -3,6 +3,7 @@
 // Actions
 const LOAD = "bucket/LOAD";
 const CREATE = "bucket/CREATE";
+const DELETE = "bucket/DELETE";
 
 // initialState
 const initialState = {
@@ -18,6 +19,9 @@ export const createBucket = (bucket) => {
     return {type: CREATE, bucket}
 }
 
+export const deleteBucket = (bucket) =>{
+    return {type: DELETE, bucket};
+}
 // Reducer
 export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
@@ -28,6 +32,15 @@ export default function reducer(state = initialState, action = {}) {
         case "bucket/CREATE" : {
             const new_bucket_list = [...state.list, action.bucket];
             return {list: new_bucket_list};
+        }
+
+        case "bucket/DELETE":{
+            const bucket_list = state.list.filter((l, idx) =>{
+                if(idx !== action.bucket){
+                    return l;
+                }
+            });
+            return {list: bucket_list};
         }
 
         default:
