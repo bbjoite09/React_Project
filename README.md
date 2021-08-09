@@ -825,6 +825,35 @@ export default withRouter(App);
 <details>
   <summary><b>2021.08.09</b></summary><br>
 
+> quiz/
+
+- 랭킹화면 만들기
+    
+- 라우팅
+  
+    라우팅을 위해 아래 패키지를 설치한다.
+    <br>
+    ```shell
+    $ yarn add react-router-dom
+    $ yarn add redux react-redux
+    ```
+    <br>
+    index.js에서 BrowserRouter을 import하고 적용시켜준다.<br>
+    이후 App.js에서 Route, Switch를 import한 후 아래와 같이 라우팅을 진행한다.<br>
+
+    ```javascript
+    <Switch>
+        <Route path="/quiz" component={Quiz} />
+        <Route path="/" exact component={Start} />
+        <Route path="/score" component={Score} />
+        <Route path="/message" component={Message} />
+        <Route path="/ranking" component={Ranking} />
+    </Switch>
+    ```
+    <br>
+
+- 리덕스에 데이터 넣기
+
 </details>
 <br><br>
 
