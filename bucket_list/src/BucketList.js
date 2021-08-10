@@ -14,7 +14,7 @@ const BucketList = (props) => {
                     <ItemStyle
                         className="list_item"
                         key={index}
-                        color={list.completed? "pink" : "aliceblue"}
+                        color={list.completed? "pink" : "#eee"}
                         onClick={() => {
                             props.history.push('/details/' + index)
                         }}>
@@ -30,7 +30,7 @@ const BucketList = (props) => {
 const ListStyle = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 50vh;
   overflow-x: hidden;
   overflow-y: auto;
 `;
