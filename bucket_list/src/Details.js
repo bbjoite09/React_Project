@@ -14,8 +14,7 @@ const Details = (props) => {
     return (
         <div>
             <BucketName>🔮 {bucket_list[bucket_index].text} 🔮</BucketName>
-
-            <ButtonGroup>
+                <ButtonGroup>
                 <Button onClick={() => {
                     props.history.goBack();
                 }}> 뒤로가기</Button>
@@ -31,8 +30,10 @@ const Details = (props) => {
         </div>);
 };
 
+
 const BucketName = styled.h1`
-  color: #F48FB1;
+margin-top: 15vh;
+  color: #7C7877;
   text-align: center;
 `;
 
@@ -42,12 +43,10 @@ const ButtonGroup = styled.p`
 
 const Button = styled.button`
     width : 90px;
-    background-color: pink;
-    border-radius: 150px;
+    background-color: #F0E5DE;
+    border-radius: 30px;
     padding: 5px 10px;
     margin : 10px;
-    border-style: solid;
-    border-color: lightgray;
-    
+    border: 3px solid #D9D4CF;
 `;
 export default Details
