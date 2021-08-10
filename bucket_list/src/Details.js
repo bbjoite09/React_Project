@@ -1,6 +1,6 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {deleteBucket} from "./redux/modules/bucket";
+import {deleteBucket, updateBucket} from "./redux/modules/bucket";
 
 const Details = (props) => {
     const dispatch = useDispatch();
@@ -16,8 +16,12 @@ const Details = (props) => {
             <button onClick={() => {
                 dispatch(deleteBucket(bucket_index));
                 props.history.goBack();
-            }}>삭제하기
-            </button>
+            }}>삭제하기</button>
+
+            <button onClick={() => {
+                dispatch(updateBucket(bucket_index));
+                props.history.goBack();
+            }}>완료하기</button>
         </div>);
 };
 
