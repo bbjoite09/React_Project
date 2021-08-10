@@ -855,6 +855,94 @@ export default withRouter(App);
 - 리덕스에 데이터 넣기
 
 </details>
+
+<details>
+  <summary><b>2021.08.10</b></summary><br>
+
+1. keyframes<br>
+    keyframes는 styled-components 하위 요소로, 웹 애니메이션을 구현할 때(transition, animation) 자주 사용한다.<br>
+    애니메이션은 javascript로도 구현이 가능하나, 완전히 CSS 스타일적으로는 keyframes의 transition, animation을 많이 사용한다. 
+    
+    - transition : 단순한 효과를 줄때 사용 - elements 상태변화
+    - animation : 다이나믹한 효과를 줄 때 사용
+    
+    <br><br>
+    ✔ 원모양 view를 상하로 움직이는 애니메이션을 만들어 보자.<br><br>
+   
+    new project 생성 후 styled-components를 설치한다.<br>
+    이후 애니메이션을 정의하고, view를 생성한다. 이때 애니메이션 정의가 view 하단에 위치하는 경우
+    <code>ReferenceError: Cannot access 'move' before initialization</code> 에러를 발생시키므로 먼저 정의될 수 있도록 유의해야한다.
+    <br> 자세한 내용은 아래와 같다.<br>
+   
+    ```javascript
+   // 애니메이션 정의
+    const move = keyframes`
+        0%{
+            top : 20px;
+        }
+        
+        50%{
+            top: 200px;
+        }
+        
+        100%{
+            top:20px;
+        }
+    `;
+    
+   // 원 모양 뷰 정의
+    const Box = styled.div`
+        width: 150px;
+        height: 150px;
+        background-color: green;
+        border-radius:150px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+  
+        animation: ${move} 2s 1s infinite;
+    `;
+    ```
+   <br><br><br>
+    ✔ bucket_list에 프로그래스 바 추가하기<br><br>
+   
+    - (redux/modules/bucket.js) 리덕스 상태 값 변경 ➜ list에서 dictionary 형태로 변경(완료 값 true, false로 저장하기 위해)
+    - (busketList.js) 완료하기 버튼 생성, 완료한 항목 색깔 변경하기
+    - (Progress.js) 프로그래스 바 뷰를 생성한 후 기능 추가
+    - (추가) ➜ (Progress.js) <code>transition: width 1s;</code> 문장을 추가하여 프로그래스 바의 변화를 조금 더 부드럽게 조작할 수 있다.
+<br><br>
+      
+2. 스크롤바 움직이기<br>
+
+    windows.scrollTo()를 사용해서 스크롤이 있을 때 특정 위치로 이동할 수 있다.
+    <br>
+    
+    ```javascript
+    // x, y 위치로 이동하기
+     window.scrollTo(x, y)
+    // ex. 제일 위로 이동하는 경우 아래와 같이 작성할 수 있다.
+     window.scrollTo(0, 0)
+    
+    // 이때 이동을 부드럽게 설정하기 위해, behavior 속성을 smooth로 지정할 수 있다.
+     window.scrollTo({top:0, left:0, behavior: "smooth"})
+    ```
+   
+<br>
+
+3. bucket_list 프로젝트 디자인 수정<br>
+
+    progress bar 디자인, 버튼 디자인, 색상 등을 자유롭게 변경해본다. 실습 결과는 아래와 같다.
+
+    - 메인페이지(bucket_list/src/App.js, BucketList.js, Progress.js)<br>
+    
+    <p align="center"><img src="images/bucket_list_main.JPG"></p><br><br>
+   
+    - details 페이지(bucket_list/src/Details.js)<br>
+    
+   <p align="center"><img src="images/bucket_list_details.JPG"></p><br><br>
+<br>
+</details>
+
 <br><br>
 
 ## ⚙ 프로젝트 생성 과정

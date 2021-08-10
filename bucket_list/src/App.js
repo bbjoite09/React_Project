@@ -8,6 +8,7 @@ import BucketList from "./BucketList";
 import styled from "styled-components";
 import Details from "./Details";
 import NotFound from "./NotFound";
+import Progress from "./Progress";
 
 // 리덕스 스토어와 연결하기 위해 connect라는 친구를 호출할게요!
 import {connect} from 'react-redux';
@@ -57,11 +58,12 @@ class App extends React.Component {
             <div className="App">
                 <Container>
                     <Title>내 버킷리스트</Title>
+                    <Progress/>
                     <Line/>
                     {/* 컴포넌트를 넣어줍니다. */}
                     {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
                     {/* Route 쓰는 법 2가지를 모두 써봅시다! */}
-                    <Switch>
+                        <Switch>
                         <Route
                             path="/"
                             exact
@@ -88,35 +90,62 @@ class App extends React.Component {
     }
 }
 
+
 const Input = styled.div`
-  max-width: 350px;
-  min-height: 10vh;
-  background-color: #fff;
-  padding: 16px;
-  margin: 20px auto;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+    max-width: 350px;
+    min-height: 10vh;
+    background-color: #fff;
+    padding: 16px;
+    margin: 20px auto;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    $ * {
+        padding : 6px;
+    }
+    & input {
+        width: 65%;
+        &: focus{
+            border: 5px solid #F0E5DE;
+        }
+    }
+    & button {
+        width : 90px;
+        background-color: #F0E5DE;
+        border-radius: 30px;
+        padding: 5px 10px;
+        margin : 10px;
+        border: 3px solid #D9D4CF;
+    }
 `;
 
 const Container = styled.div`
-  max-width: 350px;
-  min-height: 60vh;
-  background-color: #fff;
-  padding: 16px;
-  margin: 20px auto;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+    max-width: 350px;
+    min-height: 60vh;
+    background-color: #fff;
+    padding: 16px;
+    margin: 20px auto;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 `;
 
 const Title = styled.h1`
-  color: slateblue;
-  text-align: center;
+    color: #7C7877;
+    text-align: center;
 `;
 
 const Line = styled.hr`
-  margin: 16px 0px;
-  border: 1px dotted #ddd;
+    margin: 16px 0px;
+    border: 1px dotted #ddd;
 `;
+
+const Button = styled.button`
+    
+    
+`;
+
 // withRouter 적용
 // connect로 묶어줬습니다!
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
