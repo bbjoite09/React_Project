@@ -926,8 +926,23 @@ export default withRouter(App);
     // 이때 이동을 부드럽게 설정하기 위해, behavior 속성을 smooth로 지정할 수 있다.
      window.scrollTo({top:0, left:0, behavior: "smooth"})
     ```
+   
+<br>
+
+3. bucket_list 프로젝트 디자인 수정<br>
+
+    progress bar 디자인, 버튼 디자인, 색상 등을 자유롭게 변경해본다. 실습 결과는 아래와 같다.
+
+    - 메인페이지(bucket_list/src/App.js, BucketList.js, Progress.js)<br>
+    
+    <p align="center"><img src="images/bucket_list_main.JPG"></p><br><br>
+   
+    - details 페이지(bucket_list/src/Details.js)<br>
+    
+   <p align="center"><img src="images/bucket_list_details.JPG"></p><br><br>
 <br>
 </details>
+
 <br><br>
 
 ## ⚙ 프로젝트 생성 과정
