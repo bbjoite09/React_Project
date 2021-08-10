@@ -13,7 +13,7 @@ const BucketList = (props) => {
         return (
           <ItemStyle className="list_item" key={index} onClick={() => {
             props.history.push('/details/'+index)}}>
-            {list}
+            {list.text}
           </ItemStyle>
         );
       })}

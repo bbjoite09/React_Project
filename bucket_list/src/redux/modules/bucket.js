@@ -7,7 +7,14 @@ const DELETE = "bucket/DELETE";
 
 // initialState
 const initialState = {
-    list: ["영화관 가기", "매일 책읽기", "수영 배우기"],
+    // 상태 변화를 체크하기 위해 자료 형태 변경
+    // list: ["영화관 가기", "매일 책읽기", "수영 배우기"],
+    list: [
+        {text: "영화관 가기", completed: false},
+        {text: "매일 책읽기", completed: false},
+        {text: "수영 배우기", completed: false},
+        {text: "춤 배우기", completed: false},
+    ],
 };
 
 //Action Creators - export default 는 파일당 1개만 가능하므로 그냥 export
