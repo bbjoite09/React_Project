@@ -943,6 +943,23 @@ export default withRouter(App);
 <br>
 </details>
 
+<details>
+  <summary><b>2021.08.11</b></summary><br>
+
+  export 오류가 발생하여 각 페이지를 직접 javascript로 작성하기로 결정하였다.<br>
+  대신 react의 다양한 라이브러리를 활용하여 더 다이나믹한 모션을 추가하기로 결정하였다.
+
+1. Home_page 구현<br><br>
+    - XD로 디자인한 메인페이지를 javascript로 직접 작성하였다.
+    - 하단에 팀이름과 팀원 이름이 좌우로 움직이는 animation을 추가하였다.
+    - 상단 Header 부분 중 contents 버튼에 hover 효과를 더해 클릭하기 전 반응을 추가하였다.
+    - 시작 시 10초간 main text 가 우측에서 지정한 위치(좌측)로 이동하는 animation을 추가하였다.
+    
+    
+</details>
+
+
+
 <br><br>
 
 ## ⚙ 프로젝트 생성 과정
