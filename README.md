@@ -958,6 +958,22 @@ export default withRouter(App);
     
 </details>
 
+<details>
+  <summary><b>2021.08.25</b></summary><br>
+
+1. basic, advanced 페이지 구현<br>
+
+    강의 컨텐츠를 담을 기초학습, 심화학습 페이지를 구현하고 라우팅하였다.<br>
+    <p align="center"><img src="images/basic_page.JPG"></p><br>
+    <p align="center"><img src="images/advanced_page.JPG"></p><br><br>
+
+
+2. 부트스트랩 이용에 따른 디자인 수정<br>
+
+    부트스트랩을 설치하고 폰트 및 배치를 수정해였다.
+
+</details>
+
 
 
 <br><br>
