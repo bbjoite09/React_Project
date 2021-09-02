@@ -46,30 +46,46 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        const bucket = firestore.collection("bucket");
+        const bucket = firestore.collection("bucket2");
 
-        // 비동기 작업 -> .then : 비동기 작업이 끝나면 then 내부 실행
-        bucket.doc("bucket_item2").get().then((doc) => {
-            if (doc.exists) {
-                console.log(doc);
-                console.log(doc.data());
-                console.log(doc.id);
-            }
-            console.log(doc.exists);
-        });
+        bucket.doc("bucket_item").set({text: "수영배우기", completed: false});
 
+        // // 비동기 작업 -> .then : 비동기 작업이 끝나면 then 내부 실행
+        // bucket.doc("bucket_item2").get().then((doc) => {
+        //     if (doc.exists) {
+        //         console.log(doc);
+        //         console.log(doc.data());
+        //         console.log(doc.id);
+        //     }
+        //     console.log(doc.exists);
+        // });
+        //
+        //
+        // // bucket collection 전체 가져오기
+        // bucket.get().then(docs => {
+        //     let bucket_data = [];
+        //
+        //     docs.forEach((doc) => {
+        //         if(doc.exists){
+        //             bucket_data = [...bucket_data, {id : doc.id, ...doc.data()}]
+        //         }
+        //     });
+        //     console.log(bucket_data);
+        // });
 
-        // bucket collection 전체 가져오기
-        bucket.get().then(docs => {
-            let bucket_data = [];
+        // 데이터 추가하기
+        // bucket.add({text: "캘리그라피 배우기", completed: false}).then((docRef) => {
+        //     console.log(docRef);
+        //     console.log(docRef.id);
+        // })
 
-            docs.forEach((doc) => {
-                if(doc.exists){
-                    bucket_data = [...bucket_data, {id : doc.id, ...doc.data()}]
-                }
-            });
-            console.log(bucket_data);
-        });
+        // 데이터 수정하기
+        // bucket.doc("bucket_item1").update({text: "수영 배우기2"})
+
+        // 데이터 삭제하기
+        // bucket.doc("bucket_item2").delete().then(docRef =>{
+        //     console.log("지웠어요!!")
+        // })
     }
 
     addBucketList = () => {

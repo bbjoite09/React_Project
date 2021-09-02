@@ -958,14 +958,21 @@ export default withRouter(App);
 
 1. 리액트에 Firebase 연동하기<br><br>
 
-    - 파이어베이스 패키지 설치
+    - 파이어베이스 패키지 설치<br>
+      
         ```shell
       # 패키지 업데이트 전 버전 설치
         $ yarn add firebase@8.10.0
         ```
+      <br>
       
-    - config 가져오기
+    - config 가져오기<br>
     
+        firebase 대시보드에서 웹버튼 클릭하고 앱을 등록한다. 
+        등록이 완료된 후 Firebase SDK 추가가 뜨면 firebaseConfig 내용만 복사해 아래 firebase.js 내부 firebaseConfig 부분에 추가해준다.
+        firebase.js 파일 생성 과정은 토글 버튼을 눌러 자세히 확인할 수 있다.
+        <br><br>
+      
         <details><summary>src 폴더 하위에 firebase.js 파일 생성</summary>
         
         ```javascript
@@ -973,7 +980,7 @@ export default withRouter(App);
         import "firebase/firestore";
         
         const firebaseConfig = {
-            // config 정보
+            // config 정보 추가
         };
         
         // firebaseConfig 정보로 firebase 시작
@@ -985,7 +992,83 @@ export default withRouter(App);
         // 필요한 곳에서 사용할 수 있도록 내보내기
         export { firestore };
         ```
-      </details>
+        </details>
+    
+        <br>firebase와 리액트가 연동되면 App.js에서 아래 내용을 import시켜 firebase.js에서 내보낸 데이터를 가져올 수 있다.
+        <br>
+        ```javascript
+        // App.js
+        import { firestore } from "./firebase";
+        ```
+        <br>
+      
+        componentDidMount에서 console을 찍어 데이터를 불러올 수 있다. 자세한 내용은 아래와 같다.
+        <br>
+        ```javascript
+        componentDidMount() {
+            const bucket = firestore.collection("bucket");
+        
+            // 비동기 작업 -> .then : 비동기 작업이 끝나면 then 내부 실행
+            bucket.doc("bucket_item2").get().then((doc) => {
+                if (doc.exists) {
+                    console.log(doc);
+                    console.log(doc.data());
+                    console.log(doc.id);
+                }
+                console.log(doc.exists);
+            });
+        
+        
+            // bucket collection 전체 가져오기
+            bucket.get().then(docs => {
+                let bucket_data = [];
+        
+                docs.forEach((doc) => {
+                    if(doc.exists){
+                        bucket_data = [...bucket_data, {id : doc.id, ...doc.data()}]
+                    }
+                });
+                console.log(bucket_data);
+            });
+        }
+        ```
+        <br>
+    
+<br>
+
+2. FireStore 데이터 조작<br>
+
+    ⁂ 공식문서는 <a href="https://firebase.google.com/docs/firestore?authuser=0#key_capabilities">
+    링크</a>를 통해 확인할 수 있다.
+    <br><br>   
+
+    - 데이터 삽입하기
+    <br>
+    ```javascript
+    // App.js
+    bucket.add({text: "캘리그라피 배우기", completed: false})
+    ```
+   <br>
+
+    - 데이터 수정하기
+    <br>
+    ```javascript
+    // App.js
+    // 삭제할 id를 지정
+    bucket.doc("bucket_item1").update({text: "수영 배우기2"})
+    ```
+   <br>
+
+    - 데이터 삭제하기
+    <br>
+    ```javascript
+    // App.js
+    // 삭제할 id를 지정
+    bucket.doc("bucket_item2").delete()
+    ```
+   <br>
+        
+        
 </details>
 <br><br>
 

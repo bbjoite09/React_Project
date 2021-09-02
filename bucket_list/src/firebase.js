@@ -3,6 +3,13 @@ import "firebase/firestore";
 
 const firebaseConfig = {
     // config 정보
+      apiKey: "AIzaSyApy6KYeCEMUF_Z-1FTwuoDzpmER72bWq4",
+      authDomain: "react-project-d89ef.firebaseapp.com",
+      projectId: "react-project-d89ef",
+      storageBucket: "react-project-d89ef.appspot.com",
+      messagingSenderId: "1070741750430",
+      appId: "1:1070741750430:web:ee600488ba46032f88318f",
+      measurementId: "G-X495X4LBZF"
 };
 
 // firebaseConfig 정보로 firebase 시작
