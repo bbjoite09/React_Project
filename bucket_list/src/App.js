@@ -15,6 +15,8 @@ import {connect} from 'react-redux';
 // 리덕스 모듈에서 (bucket 모듈에서) 액션 생성 함수 두개를 가져올게요!
 import {loadBucket, createBucket} from './redux/modules/bucket';
 
+import {firestore} from "./firebase";
+
 // 이 함수는 스토어가 가진 상태값을 props로 받아오기 위한 함수예요.
 const mapStateToProps = (state) => {
     return {bucket_list: state.bucket.list};
@@ -44,7 +46,30 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
+        const bucket = firestore.collection("bucket");
+
+        // 비동기 작업 -> .then : 비동기 작업이 끝나면 then 내부 실행
+        bucket.doc("bucket_item2").get().then((doc) => {
+            if (doc.exists) {
+                console.log(doc);
+                console.log(doc.data());
+                console.log(doc.id);
+            }
+            console.log(doc.exists);
+        });
+
+
+        // bucket collection 전체 가져오기
+        bucket.get().then(docs => {
+            let bucket_data = [];
+
+            docs.forEach((doc) => {
+                if(doc.exists){
+                    bucket_data = [...bucket_data, {id : doc.id, ...doc.data()}]
+                }
+            });
+            console.log(bucket_data);
+        });
     }
 
     addBucketList = () => {
@@ -63,7 +88,7 @@ class App extends React.Component {
                     {/* 컴포넌트를 넣어줍니다. */}
                     {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
                     {/* Route 쓰는 법 2가지를 모두 써봅시다! */}
-                        <Switch>
+                    <Switch>
                         <Route
                             path="/"
                             exact

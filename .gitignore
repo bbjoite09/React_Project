@@ -857,3 +857,7 @@ Temporary Items
 
 # End of https://www.toptal.com/developers/gitignore/api/yarn,reactnative
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,visualstudio,visualstudiocode,react
+
+
+# dotenv environment variables file
+.env

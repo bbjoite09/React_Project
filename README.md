@@ -907,6 +907,86 @@ export default withRouter(App);
 <br>
 </details>
 
+<details>
+    <summary><b>2021.09.02</b></summary><br>
+
+1. 서버와 서버리스
+    
+    웹은 서버-클라이언트간에 requests, responses을 통해 동작한다.<br><br>
+   
+    - 클라이언트는 서버에 requests해서 받은 내용을 화면에 보여주는 역할을 한다.
+    - 서버는 데이터 관리, 분산 처리(user가 많을 때 나눠서 관리 or 데이터 분산 처리 등), 웹어플리케이션(와스) 동작, 이미지 서버 등
+   다양한 역할을 한다.
+      
+    <br>이때 서버리스(serverless)를 이용할 수 있는데, 서버리스란 서버를 관리할 필요가 없는 모델을 말한다.
+    즉 누군가가 구축해둔 서버의 일부를 빌려 쓸 수 있다는 것인데, 인프라를 구축하고, 서버 스펙을 고민할 필요가 없다는 장점이있다.
+
+<br>
+
+2. Firebase
+
+    Firebase는 서버리스 서비스 중 하나인데 BaaS(Backend as a Service - 백앤드를 서비스 형태로 빌려올 수 있는 것) 중 하나라고도 표현할 수 있다.
+    예를들어 Firebase는 데이터 베이스, 소셜 서비스 연동, 파일 시스템 등을 API 형태로 제공해준다.
+   <br><br>
+   
+    - FireStore 이란?
+        
+        FireStore는 Firebase에 포함되어 있는 서비스 중 하나로 realtime-database를 제공한다. 이때 유연하고 확장 가능한 `NoSQL` 클라우드 데이터베이스라는 특징이 있다.<br>
+        <br>
+        - Collection : Document의 집합
+        - Document: JSON 형식으로 데이터를 저장
+    
+    <br><br>
+    
+    - FireStore 설정 방법
+    <br><br>
+    
+        1. Firebase 사이트에서 프로젝트 생성 후, 생성된 프로젝트 클릭
+        2. Cloud Firestore 추가
+        3. 데이터베이스 만들기 클릭
+        4. 보안규칙 설정(테스트 모드에서 시작)
+        5. Cloud Firestore 위치 설정(asia-northeast2)
+    
+    <br>
+    위의 방법으로 FireStore 설정이 완료되면 대시보드에서 FireStore로 데이터 삽입이 가능하다.(빌드/firestore Database → 컬렉션 시작 → 컬렉션 생성, 문서ID와 필드값 삽입)
+
+
+</details>
+
+<details>
+    <summary><b>2021.09.03</b></summary><br>
+
+1. 리액트에 Firebase 연동하기<br><br>
+
+    - 파이어베이스 패키지 설치
+        ```shell
+      # 패키지 업데이트 전 버전 설치
+        $ yarn add firebase@8.10.0
+        ```
+      
+    - config 가져오기
+    
+        <details><summary>src 폴더 하위에 firebase.js 파일 생성</summary>
+        
+        ```javascript
+        import firebase from "firebase/app";
+        import "firebase/firestore";
+        
+        const firebaseConfig = {
+            // config 정보
+        };
+        
+        // firebaseConfig 정보로 firebase 시작
+        firebase.initializeApp(firebaseConfig);
+        
+        // firebase의 firestore 인스턴스를 변수에 저장
+        const firestore = firebase.firestore();
+        
+        // 필요한 곳에서 사용할 수 있도록 내보내기
+        export { firestore };
+        ```
+      </details>
+</details>
 <br><br>
 
 ## 🧚🏻‍♂️ SHAP-STORY PROJECT_TIL
