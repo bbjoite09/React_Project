@@ -1,4 +1,4 @@
-# React_Project_모각코_TIL
+# ⚔ React Project
 
 <details>
   <summary><b>2021.07.06</b></summary><br>
@@ -703,33 +703,14 @@ export default withRouter(App);
     </Switch>
     ```
 
-
     
 </details>
 
 <details>
     <summary><b>2021.07.24</b></summary><br>
-<b>📄 SHAP_STORY PROJECT</b>
-
-- XD 상세 페이지 확정(마이페이지, 질문 게시판, 질문하기 페이지 디자인 확정)
-- 인터랙션 추가 및 프로토타입 확정
-    
-    <br>
-    페이지에 대한 이미지 예시는 아래와 같다.<br>
-    
-    1. 마이페이지 
-    <p align="center"><img src="images/mypage.JPG"></p>
-  
-    2. 질문 게시판 
-    <p align="center"><img src="images/question_board.JPG"></p>
-  
-    3. 질문하기 페이지 
-    <p align="center"><img src="images/question.JPG"></p>
-<br><br>
-
 
 1. 리덕스
-    
+
     리덕스는 상태관리 관련한 라이브러리이다. 이때 상태 관리란 컴포넌트의 데이터를 관리하는 것을 말한다. 
    공식문서는 <a href="https://ko.redux.js.org/introduction/getting-started/">여기</a>에서 확인할 수 있다.
     
@@ -804,23 +785,6 @@ export default withRouter(App);
 
 </details>
 
-<details>
-  <summary><b>2021.08.04</b></summary><br>
-
-- 페이지 디자인 수정 및 exports
-- Event Lister 활용한 컨텐츠 미리보기 논의
-<br><br>
-
-- 추후일정(Event Listener 이용해서 알라딘의 요술램프 모션 만들기)
-</details>
-
-<details>
-  <summary><b>2021.08.07</b></summary><br>
-
-- 오류사항 수정
-- 라우팅 관련 논의
-- Event Listener 공부
-</details>
 
 <details>
   <summary><b>2021.08.09</b></summary><br>
@@ -941,6 +905,49 @@ export default withRouter(App);
     
    <p align="center"><img src="images/bucket_list_details.JPG"></p><br><br>
 <br>
+</details>
+
+<br><br>
+
+## 🧚🏻‍♂️ SHAP-STORY PROJECT_TIL
+
+<details>
+    <summary><b>2021.07.24</b></summary><br>
+
+- XD 상세 페이지 확정(마이페이지, 질문 게시판, 질문하기 페이지 디자인 확정)
+- 인터랙션 추가 및 프로토타입 확정
+    
+    <br>
+    페이지에 대한 이미지 예시는 아래와 같다.<br>
+  <br>
+
+    1. 마이페이지 
+    <p align="center"><img src="images/mypage.JPG"></p>
+  
+    2. 질문 게시판 
+    <p align="center"><img src="images/question_board.JPG"></p>
+  
+    3. 질문하기 페이지 
+    <p align="center"><img src="images/question.JPG"></p>
+
+</details>
+
+<details>
+  <summary><b>2021.08.04</b></summary><br>
+
+- 페이지 디자인 수정 및 exports
+- Event Lister 활용한 컨텐츠 미리보기 논의
+<br><br>
+
+- 추후일정(Event Listener 이용해서 알라딘의 요술램프 모션 만들기)
+</details>
+
+<details>
+  <summary><b>2021.08.07</b></summary><br>
+
+- 오류사항 수정
+- 라우팅 관련 논의
+- Event Listener 공부
 </details>
 
 <details>
