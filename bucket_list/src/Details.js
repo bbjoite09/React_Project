@@ -1,6 +1,6 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {deleteBucket, updateBucket} from "./redux/modules/bucket";
+import {deleteBucketFB, updateBucketFB} from "./redux/modules/bucket";
 import styled from "styled-components";
 
 const Details = (props) => {
@@ -19,11 +19,11 @@ const Details = (props) => {
                     props.history.goBack();
                 }}> 뒤로가기</Button>
                 <Button onClick={() => {
-                    dispatch(updateBucket(bucket_index));
+                    dispatch(updateBucketFB(bucket_index));
                     props.history.goBack();
                 }}>완료하기</Button>
                 <Button onClick={() => {
-                    dispatch(deleteBucket(bucket_index));
+                    dispatch(deleteBucketFB(bucket_index));
                     props.history.goBack();
                 }}>삭제하기</Button>
             </ButtonGroup>

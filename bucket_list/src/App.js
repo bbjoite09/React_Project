@@ -10,26 +10,26 @@ import Details from "./Details";
 import NotFound from "./NotFound";
 import Progress from "./Progress";
 
-// 리덕스 스토어와 연결하기 위해 connect라는 친구를 호출할게요!
+// 리덕스 스토어와 연결하기 위해 connect라는 호출
 import {connect} from 'react-redux';
-// 리덕스 모듈에서 (bucket 모듈에서) 액션 생성 함수 두개를 가져올게요!
-import {loadBucket, createBucket} from './redux/modules/bucket';
+// 리덕스 모듈에서 (bucket 모듈에서) 액션 생성 함수 가져오기
+import {loadBucketFB, addBucketFB, deleteBucketFB} from './redux/modules/bucket';
 
 import {firestore} from "./firebase";
 
-// 이 함수는 스토어가 가진 상태값을 props로 받아오기 위한 함수예요.
+// 이 함수는 스토어가 가진 상태값을 props로 받아오기 위한 함수
 const mapStateToProps = (state) => {
     return {bucket_list: state.bucket.list};
 };
 
-// 이 함수는 값을 변화시키기 위한 액션 생성 함수를 props로 받아오기 위한 함수예요.
+// 이 함수는 값을 변화시키기 위한 액션 생성 함수를 props로 받아오기 위한 함수
 const mapDispatchToProps = (dispatch) => {
     return {
         load: () => {
-            dispatch(loadBucket());
+            dispatch(loadBucketFB());
         },
         create: (bucket) => {
-            dispatch(createBucket(bucket));
+            dispatch(addBucketFB(bucket));
         }
     }
 
@@ -46,46 +46,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        const bucket = firestore.collection("bucket2");
-
-        bucket.doc("bucket_item").set({text: "수영배우기", completed: false});
-
-        // // 비동기 작업 -> .then : 비동기 작업이 끝나면 then 내부 실행
-        // bucket.doc("bucket_item2").get().then((doc) => {
-        //     if (doc.exists) {
-        //         console.log(doc);
-        //         console.log(doc.data());
-        //         console.log(doc.id);
-        //     }
-        //     console.log(doc.exists);
-        // });
-        //
-        //
-        // // bucket collection 전체 가져오기
-        // bucket.get().then(docs => {
-        //     let bucket_data = [];
-        //
-        //     docs.forEach((doc) => {
-        //         if(doc.exists){
-        //             bucket_data = [...bucket_data, {id : doc.id, ...doc.data()}]
-        //         }
-        //     });
-        //     console.log(bucket_data);
-        // });
-
-        // 데이터 추가하기
-        // bucket.add({text: "캘리그라피 배우기", completed: false}).then((docRef) => {
-        //     console.log(docRef);
-        //     console.log(docRef.id);
-        // })
-
-        // 데이터 수정하기
-        // bucket.doc("bucket_item1").update({text: "수영 배우기2"})
-
-        // 데이터 삭제하기
-        // bucket.doc("bucket_item2").delete().then(docRef =>{
-        //     console.log("지웠어요!!")
-        // })
+        this.props.load();
     }
 
     addBucketList = () => {
