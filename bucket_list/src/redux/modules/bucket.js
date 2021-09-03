@@ -19,6 +19,7 @@ const initialState = {
         {text: "수영 배우기", completed: false},
         {text: "춤 배우기", completed: false},
     ],
+    is_loaded: false,
 };
 
 //Action Creators - export default 는 파일당 1개만 가능하므로 그냥 export
@@ -115,7 +116,7 @@ export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
         case "bucket/LOAD": {
             if (action.bucket.length > 0) {
-                return {list: action.bucket};
+                return {list: action.bucket, is_loaded: true};
             }
             return state;
         }
