@@ -9,6 +9,8 @@ const CREATE = "bucket/CREATE";
 const DELETE = "bucket/DELETE";
 const UPDATE = "bucket/UPDATE";
 
+const LOADED = "bucket/LOADED";
+
 // initialState
 const initialState = {
     // 상태 변화를 체크하기 위해 자료 형태 변경
@@ -39,6 +41,10 @@ export const updateBucket = (bucket) => {
     return {type: UPDATE, bucket};
 }
 
+export const isLoaded = (loaded) => {
+    return {type: LOADED, loaded}
+}
+
 // 통신
 export const loadBucketFB = () => {
     return function (dispatch) {
@@ -58,6 +64,8 @@ export const loadBucketFB = () => {
 
 export const addBucketFB = (bucket) => {
     return function (dispatch) {
+        dispatch(isLoaded(false));
+
         let bucket_data = {text: bucket, completed: false};
 
         bucket_db
@@ -65,7 +73,11 @@ export const addBucketFB = (bucket) => {
             .then((docRef) => {
                 // id를 추가한다!
                 bucket_data = {...bucket_data, id: docRef.id};
+
+                // 성공했을 때는? 액션 디스패치!
                 dispatch(createBucket(bucket_data));
+                // 스피너도 다시 없애줘야죠!
+                dispatch(isLoaded(true));
             })
             .catch((err) => {
                 // 여긴 에러가 났을 때 들어오는 구간입니다!
@@ -77,12 +89,14 @@ export const addBucketFB = (bucket) => {
 
 export const updateBucketFB = (bucket) => {
     return function (dispatch, getState) {
+        dispatch(isLoaded(false));
+
         const _bucket_data = getState().bucket.list[bucket];
         console.log(_bucket_data);
 
         let bucket_data = {..._bucket_data, completed: true};
 
-        if(!bucket_data.id){
+        if (!bucket_data.id) {
             return;
         }
 
@@ -91,6 +105,7 @@ export const updateBucketFB = (bucket) => {
             .update(bucket_data)
             .then((res) => {
                 dispatch(updateBucket(bucket));
+                dispatch(isLoaded(true));
             }).catch(error => {
             console.log(error);
         })
@@ -99,12 +114,17 @@ export const updateBucketFB = (bucket) => {
 
 export const deleteBucketFB = (bucket) => {
     return function (dispatch, getState) {
+        dispatch(isLoaded(false));
+
         const _bucket_data = getState().bucket.list[bucket];
 
-        if(!_bucket_data.id){return;}
+        if (!_bucket_data.id) {
+            return;
+        }
 
         bucket_db.doc(_bucket_data.id).delete().then(docRef => {
             dispatch(deleteBucket(bucket));
+            dispatch(isLoaded(true));
         }).catch(error => {
             console.log(error);
         });
@@ -145,6 +165,10 @@ export default function reducer(state = initialState, action = {}) {
             });
 
             return {list: bucket_list};
+        }
+
+        case "bucket/LOADED": {
+            return {...state, is_loaded: action.loaded};
         }
 
         default:
