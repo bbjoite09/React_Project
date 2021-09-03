@@ -1263,6 +1263,7 @@ export default withRouter(App);
     
         원래 액션 생성 함수는 객체를 반환하지만, redux-thunk는 객체 대신 함수(액션 생성 함수)를 반환할 수 있게 해준다. 이를 통해 특정 액션이 발생하기 전에 조건을 주거나, 어떤 행동을 사전에 처리할 수 있도록 도와준다.
     
+<br>
 
 2. 머테리얼 UI<br><br>
 
@@ -1273,13 +1274,22 @@ export default withRouter(App);
     ```shell
     $ yarn add @material-ui/core @material-ui/icons
     ```
-    <br>
 
-3. 페이지 가리기<br><br>
+<br>
+
+3. 페이지 가리기<br>
+
+    > bucket_list/src/Spinner.js
 
     페이지를 새로고침 했을 때, 파이어스토어의 데이터가 바로 보이는 것이 아니라 리덕스에 넣어놓은 initial state(가짜 데이터)가 보였다가 로딩되는 것을 볼 수 있다.
     이외에도 수정, 추가 버튼 클릭/ 여러번 API를 호출하는 현상을 방지하기 위해 페이지를 의도적으로 가려 원하는 부분만 보여줄 수 있도록 설정할 수 있다. 
-   이렇게 화면을 가려주는 것을 `로딩스피너`라고 한다.
+    이렇게 화면을 가려주는 것을 `로딩스피너`라고 한다.
 
+<br>
+
+4. AWS S3 버킷<br><br>
+
+    S3(Simple Storage Service)는 단순 스토리지 서비스로 이미지나 파일을 저장할 수 있다, 또한 html, css, js 같은 정적 자원을 올리고, 정적 웹사이트를 호스팅할 수 있다.
+    이때 정적 웹 사이트란 서버 측 스크립트(PHP, JSP, ASP)를 사용하지 않고 html, js, css와 같은 정적 자원으로만 이루어진 웹 사이트를 말한다.
 </details>
 
