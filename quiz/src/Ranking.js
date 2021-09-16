@@ -1,54 +1,84 @@
 import React from "react";
 import styled from "styled-components";
 
-import {useSelector, useDispatch} from "react-redux";
-import {resetAnswer} from "./redux/modules/quiz";
+import { useSelector, useDispatch } from "react-redux";
+import { resetAnswer } from "./redux/modules/quiz";
 
 const Ranking = (props) => {
-    const dispatch = useDispatch();
-    const _ranking = useSelector((state) => state.rank.ranking);
-// Array 내장 함수 sort로 정렬하자!
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+  const dispatch = useDispatch();
+  const _ranking = useSelector((state) => state.rank.ranking);
 
-    const ranking = _ranking.sort((a, b) => {
-        // 높은 수가 맨 앞으로 오도록!
-        return b.score - a.score;
+  React.useEffect(() => {
+    // current 가 없을 때는 바로 리턴해줍니다.
+    if (!user_rank.current) {
+      return;
+    }
+    // offsetTop 속성을 이용해 스크롤을 이동하자!
+    window.scrollTo({
+      top: user_rank.current.offsetTop,
+      left: 0,
+      behavior: "smooth",
     });
+  }, []);
 
-    return (
-        <RankContainer>
-            <Topbar>
+  // 스크롤 이동할 div의 ref를 잡아줄거예요!
+  const user_rank = React.useRef(null);
+
+  // Array 내장 함수 sort로 정렬하자!
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+  const ranking = _ranking.sort((a, b) => {
+    // 높은 수가 맨 앞으로 오도록!
+    return b.score - a.score;
+  });
+
+  return (
+    <RankContainer>
+      <Topbar>
+        <p>
+          <span>{ranking.length}명</span>의 사람들 중 당신은?
+        </p>
+      </Topbar>
+
+      <RankWrap>
+        {ranking.map((r, idx) => {
+          if (r.current) {
+            return (
+              <RankItem key={idx} highlight={true} ref={user_rank}>
+                <RankNum>{idx + 1}등</RankNum>
+                <RankUser>
+                  <p>
+                    <b>{r.name}</b>
+                  </p>
+                  <p>{r.message}</p>
+                </RankUser>
+              </RankItem>
+            );
+          }
+          return (
+            <RankItem key={idx}>
+              <RankNum>{idx + 1}등</RankNum>
+              <RankUser>
                 <p>
-                    <span>{ranking.length}명</span>의 사람들 중 당신은?
+                  <b>{r.name}</b>
                 </p>
-            </Topbar>
+                <p>{r.message}</p>
+              </RankUser>
+            </RankItem>
+          );
+        })}
+      </RankWrap>
 
-            <RankWrap>
-                {ranking.map((r, idx) => {
-                    return (
-                        <RankItem key={idx} highlight={r.current ? true : false}>
-                            <RankNum>{idx + 1}등</RankNum>
-                            <RankUser>
-                                <p>
-                                    <b>{r.name}</b>
-                                </p>
-                                <p>{r.message}</p>
-                            </RankUser>
-                        </RankItem>
-                    );
-                })}
-            </RankWrap>
-
-            <Button
-                onClick={() => {
-                    dispatch(resetAnswer());
-                    window.location.href = '/';
-                }}
-            >
-                다시 하기
-            </Button>
-        </RankContainer>
-    );
+      <Button
+        onClick={() => {
+          dispatch(resetAnswer());
+          window.location.href = "/";
+        }}
+      >
+        다시 하기
+      </Button>
+    </RankContainer>
+  );
 };
 
 const RankContainer = styled.div`
@@ -58,7 +88,7 @@ const RankContainer = styled.div`
 
 const Topbar = styled.div`
   position: fixed;
-  top:0;
+  top: 0;
   left: 0;
   width: 100vw;
   min-height: 50px;
@@ -91,7 +121,7 @@ const RankItem = styled.div`
   border: 1px solid #ddd;
   padding: 8px 16px;
   align-items: center;
-  background-color: ${props => props.highlight ? "#ffd6aa" : "#ffffff"}
+  background-color: ${(props) => (props.highlight ? "#ffd6aa" : "#ffffff")};
 `;
 
 const RankNum = styled.div`
@@ -105,8 +135,8 @@ const RankNum = styled.div`
 const RankUser = styled.div`
   padding: 8px 16px;
   text-align: left;
-  & > p{
-    &:first-child > b{
+  & > p {
+    &:first-child > b {
       border-bottom: 2px solid #212121;
     }
     margin: 0px 0px 8px 0px;
@@ -114,9 +144,9 @@ const RankUser = styled.div`
 `;
 
 const Button = styled.button`
-position: fixed;
-bottom: 5vh;
-left: 0;
+  position: fixed;
+  bottom: 5vh;
+  left: 0;
   padding: 8px 24px;
   background-color: ${(props) => (props.outlined ? "#ffffff" : "#dadafc")};
   border-radius: 30px;

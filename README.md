@@ -1,4 +1,186 @@
-# React_Project_모각코_TIL
+# ⚔ React Project
+## ⚙ 프로젝트 생성 과정
+
+1. 새 CRA 만들기
+
+   ```shell
+   $ yarn create react-app [프로젝트명]
+   ```
+   <br>
+2. index.js에서 <React.StrictMode> 지우기(console 여러개 뜨지 않도록!)
+   
+   ```javascript
+   ReactDOM.render(
+       <App />,
+       document.getElementById('root')
+   );
+   ```
+   <br>
+3. App.js를 class형 컴포넌트로 수정
+
+   ```javascript
+   import React from 'react';
+   
+   class App extends React.Component {
+     constructor(props){
+       super(props);
+   
+       this.state = {}
+     }
+     
+     render(){
+       return (
+         <div className="App">
+           
+         </div>
+       );
+     }
+   }
+   
+   export default App;
+   ```
+<br>
+
+
+## 🧚🏻‍♂️ SHAP-STORY PROJECT_TIL
+
+
+<details>
+    <summary><b>2021.07.24</b></summary><br>
+
+- XD 상세 페이지 확정(마이페이지, 질문 게시판, 질문하기 페이지 디자인 확정)
+- 인터랙션 추가 및 프로토타입 확정
+    
+    <br>
+    페이지에 대한 이미지 예시는 아래와 같다.<br>
+  <br>
+
+    1. 마이페이지 
+    <p align="center"><img src="images/mypage.JPG"></p>
+  
+    2. 질문 게시판 
+    <p align="center"><img src="images/question_board.JPG"></p>
+  
+    3. 질문하기 페이지 
+    <p align="center"><img src="images/question.JPG"></p>
+
+</details>
+<details>
+    <summary><b>2021.07.28</b></summary><br>
+    <p align="center"><img src="images/flow.JPG"></p>
+    전체 플로우를 수정하고, 강의 페이지 목차 페이지를 제작하였다.<br>
+    추가로 강의 페이지 컨텐츠 기획을 진행하였다. 내용은 아래와 같다.
+    <br><br>
+
+- 기초학습 ➜ 엔트리를 활용한 미로찾기 게임
+- 심화학습 ➜ 초소형 컴퓨터 마이크로 비트를 이용한 알라딘의 요술램프, 배짱이 기타 만들기(makecode.microbit.org 사용)<br>
+    이때 페이지 상단에서는 요술램프를 흔드는 모션을 취할 때 표정이 변하는 램프, 줄을 클릭하면 소리가 재생되는 기타를 미리 동작해 볼 수 있다.
+
+</details>
+<details>
+  <summary><b>2021.08.04</b></summary><br>
+
+- 페이지 디자인 수정 및 exports
+- Event Lister 활용한 컨텐츠 미리보기 논의
+<br><br>
+
+- 추후일정(Event Listener 이용해서 알라딘의 요술램프 모션 만들기)
+</details>
+
+<details>
+  <summary><b>2021.08.07</b></summary><br>
+
+- 오류사항 수정
+- 라우팅 관련 논의
+- Event Listener 공부
+</details>
+
+<details>
+  <summary><b>2021.08.11</b></summary><br>
+
+  export 오류가 발생하여 각 페이지를 직접 javascript로 작성하기로 결정하였다.<br>
+  대신 react의 다양한 라이브러리를 활용하여 더 다이나믹한 모션을 추가하기로 결정하였다.
+
+1. Home_page 구현<br><br>
+    - XD로 디자인한 메인페이지를 javascript로 직접 작성하였다.
+    - 하단에 팀이름과 팀원 이름이 좌우로 움직이는 animation을 추가하였다.
+    - 상단 Header 부분 중 contents 버튼에 hover 효과를 더해 클릭하기 전 반응을 추가하였다.
+    - 시작 시 10초간 main text 가 우측에서 지정한 위치(좌측)로 이동하는 animation을 추가하였다.
+    
+    
+</details>
+
+<details>
+  <summary><b>2021.08.25</b></summary><br>
+
+1. basic, advanced 페이지 구현<br>
+
+    강의 컨텐츠를 담을 기초학습, 심화학습 페이지를 구현하고 라우팅하였다.<br>
+    <p align="center"><img src="images/basic_page.JPG"></p><br>
+    <p align="center"><img src="images/advanced_page.JPG"></p><br><br>
+
+
+2. 부트스트랩 이용에 따른 디자인 수정<br>
+
+    부트스트랩을 설치하고 폰트 및 배치를 수정해였다.
+
+</details>
+
+<details>
+    <summary>🥇 회고록(DAKI – Drop, Add, Keep, Improve)</summary>
+
+<b>DROP</b><br><br>
+<i>디자인 툴에 대한 이해 부족</i><br>
+모각코에서는 디자인적 경험 보다는, 코딩적으로 더 넓고 깊게 학습하고 싶어 최소한의 시간을 할애하고자 하였다. 이때 변환이 용이한 XD라는 툴을 이용하게 되었는데, 툴에 대한 이해가 부족하여 예상보다 많은 시간을 투자하게 되었다.
+<br>
+
+<i>중복된 코딩</i><br>
+프로젝트 초반 React를 처음 다뤄보았을 때, style만 변경하면 재사용 가능한 코딩을 중복해서 작성한 경험이 있다. 잘못되었음을 인지한 이후에는 중복된 코딩 작성을 최소화하였으나, 다음 프로젝트부터는 중복을 아예 없앨 수 있도록 할 것이다. 특히 완전하게 재사용 가능한 코딩은 component로 따로 빼 고효율을 낼 필요가 있다.
+
+<br><br>
+
+<b>ADD</b><br><br>
+<i>발 빠른 대처</i><br>
+문제 상황을 대처하는 데에 있어 미련을 남기지 않고, 부족한 부분을 빠르게 보완하고 대처할 필요가 있다. 이러한 발 빠른 대처를 통해 불필요한 시간 낭비를 막고 더 완성도 있는 결과를 만들 수 있을 것이다.
+<br>
+
+<i>소통</i><br>
+프론트와 백앤드 간에 진행상황을 효과적으로 공유할 필요가 있다. 깃허브와 메신저를 이용해 서로의 업로드 상황을 살펴 볼 수는 있었으나, 기타 툴 또는 README를 잘 활용하여 서로의 진행상황을 확인하고, 필요하다면 추가로 공부할 필요가 있다.
+
+<br><br>
+
+<b>KEEP</b><br><br>
+<i>다양한 시도</i><br>
+React를 처음 배웠기 때문에 기본 문법부터 학습하였음에도 불구하고 리액트의 다양한 라이브러리를 사용할 수 있도록 노력하였다. Keyframes, eventListener, bootstrap, styled-component 등을 이용하여 더 쉽고 빠르게 다이나믹한 웹을 구현할 수 있었다.
+<br>
+
+<i>끈기있는 도전</i><br>
+진행 과정 중 문제가 생겨 프론트를 처음부터 다시 구축 해야하는 상황에서 포기하거나 축소시키지 않고 최대한의 역량을 발휘하였다. 끈기있게 도전한 결과 프로젝트를 잘 마무리할 수 있었다.
+<br>
+
+<i>작업 방식에 대한 사전 논의</i><br>
+협업을 진행하기 전 작업 툴(github, XD), 의존성 관리(yarn), git 관리 방식(git flow)등을 미리 의논하여 충돌을 최소화하였고 관련 문제를 적게 겪을 수 있었다.
+
+<br><br>
+
+<b>Improve</b><br><br>
+<i>계획적인 스케줄링</i><br>
+초기 계획을 잘 실행하고 마무리하기는 했으나, 더 자세하고 계획적인 스케줄링을 통해 보다 ROI가 높은 효율적 개발을 진행할 수 있을 것이라고 생각한다.
+<br>
+
+<i>클린코딩</i><br>
+Naming Convention을 잘 따르고, Comments를 더 잘 작성한다면 이전보다 원활한 협업을 할 수 있을 것 같았다. 또한 변수 명에 대한 합의 과정을 거쳐 혼란이나 충돌을 막을 수 있다.
+<br>
+
+<i>풀스택</i><br>
+웹을 공부하는 과정에서, 담당했던 프론트앤드 뿐만 아니라 백앤드 관련 지식도 있었다면 더 완성도 있는 개발을 진행할 수 있었다고 생각한다. 이후에는 관련한 학습을 추가로 진행해 프로젝트를 보완, 서비스 런칭을 진행하고 싶다.
+</details>
+
+<br>
+
+##🧚🏻‍♀️️ React Practice
+
+
 
 <details>
   <summary><b>2021.07.06</b></summary><br>
@@ -703,33 +885,14 @@ export default withRouter(App);
     </Switch>
     ```
 
-
     
 </details>
 
 <details>
     <summary><b>2021.07.24</b></summary><br>
-<b>📄 SHAP_STORY PROJECT</b>
-
-- XD 상세 페이지 확정(마이페이지, 질문 게시판, 질문하기 페이지 디자인 확정)
-- 인터랙션 추가 및 프로토타입 확정
-    
-    <br>
-    페이지에 대한 이미지 예시는 아래와 같다.<br>
-    
-    1. 마이페이지 
-    <p align="center"><img src="images/mypage.JPG"></p>
-  
-    2. 질문 게시판 
-    <p align="center"><img src="images/question_board.JPG"></p>
-  
-    3. 질문하기 페이지 
-    <p align="center"><img src="images/question.JPG"></p>
-<br><br>
-
 
 1. 리덕스
-    
+
     리덕스는 상태관리 관련한 라이브러리이다. 이때 상태 관리란 컴포넌트의 데이터를 관리하는 것을 말한다. 
    공식문서는 <a href="https://ko.redux.js.org/introduction/getting-started/">여기</a>에서 확인할 수 있다.
     
@@ -791,36 +954,8 @@ export default withRouter(App);
         6. Store : redux 폴더 하위에 configStore.js 파일 생성 후 스토어 만들기
     
 </details>
-<details>
-    <summary><b>2021.07.28</b></summary><br>
-    <p align="center"><img src="images/flow.JPG"></p>
-    전체 플로우를 수정하고, 강의 페이지 목차 페이지를 제작하였다.<br>
-    추가로 강의 페이지 컨텐츠 기획을 진행하였다. 내용은 아래와 같다.
-    <br><br>
 
-- 기초학습 ➜ 엔트리를 활용한 미로찾기 게임
-- 심화학습 ➜ 초소형 컴퓨터 마이크로 비트를 이용한 알라딘의 요술램프, 배짱이 기타 만들기(makecode.microbit.org 사용)<br>
-    이때 페이지 상단에서는 요술램프를 흔드는 모션을 취할 때 표정이 변하는 램프, 줄을 클릭하면 소리가 재생되는 기타를 미리 동작해 볼 수 있다.
 
-</details>
-
-<details>
-  <summary><b>2021.08.04</b></summary><br>
-
-- 페이지 디자인 수정 및 exports
-- Event Lister 활용한 컨텐츠 미리보기 논의
-<br><br>
-
-- 추후일정(Event Listener 이용해서 알라딘의 요술램프 모션 만들기)
-</details>
-
-<details>
-  <summary><b>2021.08.07</b></summary><br>
-
-- 오류사항 수정
-- 라우팅 관련 논의
-- Event Listener 공부
-</details>
 
 <details>
   <summary><b>2021.08.09</b></summary><br>
@@ -944,128 +1079,217 @@ export default withRouter(App);
 </details>
 
 <details>
-  <summary><b>2021.08.11</b></summary><br>
+    <summary><b>2021.09.02</b></summary><br>
 
-  export 오류가 발생하여 각 페이지를 직접 javascript로 작성하기로 결정하였다.<br>
-  대신 react의 다양한 라이브러리를 활용하여 더 다이나믹한 모션을 추가하기로 결정하였다.
+1. 서버와 서버리스
+    
+    웹은 서버-클라이언트간에 requests, responses을 통해 동작한다.<br><br>
+   
+    - 클라이언트는 서버에 requests해서 받은 내용을 화면에 보여주는 역할을 한다.
+    - 서버는 데이터 관리, 분산 처리(user가 많을 때 나눠서 관리 or 데이터 분산 처리 등), 웹어플리케이션(와스) 동작, 이미지 서버 등
+   다양한 역할을 한다.
+      
+    <br>이때 서버리스(serverless)를 이용할 수 있는데, 서버리스란 서버를 관리할 필요가 없는 모델을 말한다.
+    즉 누군가가 구축해둔 서버의 일부를 빌려 쓸 수 있다는 것인데, 인프라를 구축하고, 서버 스펙을 고민할 필요가 없다는 장점이있다.
 
-1. Home_page 구현<br><br>
-    - XD로 디자인한 메인페이지를 javascript로 직접 작성하였다.
-    - 하단에 팀이름과 팀원 이름이 좌우로 움직이는 animation을 추가하였다.
-    - 상단 Header 부분 중 contents 버튼에 hover 효과를 더해 클릭하기 전 반응을 추가하였다.
-    - 시작 시 10초간 main text 가 우측에서 지정한 위치(좌측)로 이동하는 animation을 추가하였다.
+<br>
+
+2. Firebase
+
+    Firebase는 서버리스 서비스 중 하나인데 BaaS(Backend as a Service - 백앤드를 서비스 형태로 빌려올 수 있는 것) 중 하나라고도 표현할 수 있다.
+    예를들어 Firebase는 데이터 베이스, 소셜 서비스 연동, 파일 시스템 등을 API 형태로 제공해준다.
+   <br><br>
+   
+    - FireStore 이란?
+        
+        FireStore는 Firebase에 포함되어 있는 서비스 중 하나로 realtime-database를 제공한다. 이때 유연하고 확장 가능한 `NoSQL` 클라우드 데이터베이스라는 특징이 있다.<br>
+        <br>
+        - Collection : Document의 집합
+        - Document: JSON 형식으로 데이터를 저장
     
+    <br><br>
     
+    - FireStore 설정 방법
+    <br><br>
+    
+        1. Firebase 사이트에서 프로젝트 생성 후, 생성된 프로젝트 클릭
+        2. Cloud Firestore 추가
+        3. 데이터베이스 만들기 클릭
+        4. 보안규칙 설정(테스트 모드에서 시작)
+        5. Cloud Firestore 위치 설정(asia-northeast2)
+    
+    <br>
+    위의 방법으로 FireStore 설정이 완료되면 대시보드에서 FireStore로 데이터 삽입이 가능하다.(빌드/firestore Database → 컬렉션 시작 → 컬렉션 생성, 문서ID와 필드값 삽입)
+
+
 </details>
 
 <details>
-  <summary><b>2021.08.25</b></summary><br>
+    <summary><b>2021.09.03</b></summary><br>
 
-1. basic, advanced 페이지 구현<br>
+1. 리액트에 Firebase 연동하기<br><br>
 
-    강의 컨텐츠를 담을 기초학습, 심화학습 페이지를 구현하고 라우팅하였다.<br>
-    <p align="center"><img src="images/basic_page.JPG"></p><br>
-    <p align="center"><img src="images/advanced_page.JPG"></p><br><br>
+    - 파이어베이스 패키지 설치<br>
+      
+        ```shell
+      # 패키지 업데이트 전 버전 설치
+        $ yarn add firebase@8.10.0
+        ```
+      <br>
+      
+    - config 가져오기<br>
+    
+        firebase 대시보드에서 웹버튼 클릭하고 앱을 등록한다. 
+        등록이 완료된 후 Firebase SDK 추가가 뜨면 firebaseConfig 내용만 복사해 아래 firebase.js 내부 firebaseConfig 부분에 추가해준다.
+        firebase.js 파일 생성 과정은 토글 버튼을 눌러 자세히 확인할 수 있다.
+        <br><br>
+      
+        <details><summary>src 폴더 하위에 firebase.js 파일 생성</summary>
+        
+        ```javascript
+        import firebase from "firebase/app";
+        import "firebase/firestore";
+        
+        const firebaseConfig = {
+            // config 정보 추가
+        };
+        
+        // firebaseConfig 정보로 firebase 시작
+        firebase.initializeApp(firebaseConfig);
+        
+        // firebase의 firestore 인스턴스를 변수에 저장
+        const firestore = firebase.firestore();
+        
+        // 필요한 곳에서 사용할 수 있도록 내보내기
+        export { firestore };
+        ```
+        </details>
+    
+        <br>firebase와 리액트가 연동되면 App.js에서 아래 내용을 import시켜 firebase.js에서 내보낸 데이터를 가져올 수 있다.
+        <br>
+        ```javascript
+        // App.js
+        import { firestore } from "./firebase";
+        ```
+        <br>
+      
+        componentDidMount에서 console을 찍어 데이터를 불러올 수 있다. 자세한 내용은 아래와 같다.
+        <br>
+        ```javascript
+        componentDidMount() {
+            const bucket = firestore.collection("bucket");
+        
+            // 비동기 작업 -> .then : 비동기 작업이 끝나면 then 내부 실행
+            bucket.doc("bucket_item2").get().then((doc) => {
+                if (doc.exists) {
+                    console.log(doc);
+                    console.log(doc.data());
+                    console.log(doc.id);
+                }
+                console.log(doc.exists);
+            });
+        
+        
+            // bucket collection 전체 가져오기
+            bucket.get().then(docs => {
+                let bucket_data = [];
+        
+                docs.forEach((doc) => {
+                    if(doc.exists){
+                        bucket_data = [...bucket_data, {id : doc.id, ...doc.data()}]
+                    }
+                });
+                console.log(bucket_data);
+            });
+        }
+        ```
+        <br>
+    
+<br>
 
+2. FireStore 데이터 조작<br>
 
-2. 부트스트랩 이용에 따른 디자인 수정<br>
+    ⁂ 공식문서는 <a href="https://firebase.google.com/docs/firestore?authuser=0#key_capabilities">
+    링크</a>를 통해 확인할 수 있다.
+    <br><br>   
 
-    부트스트랩을 설치하고 폰트 및 배치를 수정해였다.
+    - 데이터 삽입하기
+    <br>
+    ```javascript
+    // App.js
+    bucket.add({text: "캘리그라피 배우기", completed: false})
+    ```
+   <br>
 
+    - 데이터 수정하기
+    <br>
+    ```javascript
+    // App.js
+    // 삭제할 id를 지정
+    bucket.doc("bucket_item1").update({text: "수영 배우기2"})
+    ```
+   <br>
+
+    - 데이터 삭제하기
+    <br>
+    ```javascript
+    // App.js
+    // 삭제할 id를 지정
+    bucket.doc("bucket_item2").delete()
+    ```
+   <br>
+        
+        
 </details>
+<br>
 
+<details>
+    <summary><b>2021.09.04</b></summary><br>
 
+1. Redux에서 FireStore 데이터 다루기<br><br>
 
-<br><br>
-
-## ⚙ 프로젝트 생성 과정
-
-1. 새 CRA 만들기
-
-   ```shell
-   $ yarn create react-app [프로젝트명]
-   ```
-   <br>
-2. index.js에서 <React.StrictMode> 지우기(console 여러개 뜨지 않도록!)
+    FireStore 에서 데이터를 가져올때는 비동기 통신을 하는데,
+    리덕스는 이러한 비동기 통신을 하기 위해 미들웨어를 설치해야한다.<br>
    
-   ```javascript
-   ReactDOM.render(
-       <App />,
-       document.getElementById('root')
-   );
-   ```
-   <br>
-3. App.js를 class형 컴포넌트로 수정
+    이때 미들웨어란 기존에 리덕스 데이터를 수정할 때 `액션이 디스패치된 후 → 리듀서에서 처리`하던 과정 사이에 미리 사전 작업을 할 수 있도록 해주는 중간다리를 말한다.(액션이 일어나고 → `미들웨어가 할 일 하기` → 리듀서에서 처리)<br>
+    설치 방법은 아래와 같다.
+    <br>
+    ```shell
+    $ yarn add redux-thunk
+    ```
+    <br>
+    
+    - redux-thunk
+    
+        원래 액션 생성 함수는 객체를 반환하지만, redux-thunk는 객체 대신 함수(액션 생성 함수)를 반환할 수 있게 해준다. 이를 통해 특정 액션이 발생하기 전에 조건을 주거나, 어떤 행동을 사전에 처리할 수 있도록 도와준다.
+    
+<br>
 
-   ```javascript
-   import React from 'react';
+2. 머테리얼 UI<br><br>
+
+    머테리얼 UI란, 부트스트랩처럼 이미 만들어진 UI를 가져와서 사용할 수 있는 UI framwork이다. 
+    앞서 사용한 styled-components를 쓰는 것 처럼 간편하게 사용할 수 있다. 설치는 아래와 같으며 사용 방법은 <a href="https://material-ui.com/">공식 문서</a>를 통해 쉽게 익힐 수 있다.
+    <br>
    
-   class App extends React.Component {
-     constructor(props){
-       super(props);
-   
-       this.state = {}
-     }
-     
-     render(){
-       return (
-         <div className="App">
-           
-         </div>
-       );
-     }
-   }
-   
-   export default App;
-   ```
-<br>
-
-## 🙆🏻‍♀️ 회고록(DAKI – Drop, Add, Keep, Improve)
-
-
-<b>Drop</b><br><br>
-<i>디자인 툴에 대한 이해 부족</i><br>
-모각코에서는 디자인적 경험 보다는, 코딩적으로 더 넓고 깊게 학습하고 싶어 최소한의 시간을 할애하고자 하였다. 이때 변환이 용이한 XD라는 툴을 이용하게 되었는데, 툴에 대한 이해가 부족하여 예상보다 많은 시간을 투자하게 되었다.
-
-<i>중복된 코딩</i><br>
-프로젝트 초반 React를 처음 다뤄보았을 때, style만 변경하면 재사용 가능한 코딩을 중복해서 작성한 경험이 있다. 잘못되었음을 인지한 이후에는 중복된 코딩 작성을 최소화하였으나, 다음 프로젝트부터는 중복을 아예 없앨 수 있도록 할 것이다. 특히 완전하게 재사용 가능한 코딩은 component로 따로 빼 고효율을 낼 필요가 있다.
+    ```shell
+    $ yarn add @material-ui/core @material-ui/icons
+    ```
 
 <br>
 
-<b>Add</b><br><br>
-<i>발 빠른 대처</i><br>
-문제 상황을 대처하는 데에 있어 미련을 남기지 않고, 부족한 부분을 빠르게 보완하고 대처할 필요가 있다. 이러한 발 빠른 대처를 통해 불필요한 시간 낭비를 막고 더 완성도 있는 결과를 만들 수 있을 것이다.
+3. 페이지 가리기<br>
+
+    > bucket_list/src/Spinner.js
+
+    페이지를 새로고침 했을 때, 파이어스토어의 데이터가 바로 보이는 것이 아니라 리덕스에 넣어놓은 initial state(가짜 데이터)가 보였다가 로딩되는 것을 볼 수 있다.
+    이외에도 수정, 추가 버튼 클릭/ 여러번 API를 호출하는 현상을 방지하기 위해 페이지를 의도적으로 가려 원하는 부분만 보여줄 수 있도록 설정할 수 있다. 
+    이렇게 화면을 가려주는 것을 `로딩스피너`라고 한다.
 
 <br>
 
-<i>소통</i><br>
-프론트와 백앤드 간에 진행상황을 효과적으로 공유할 필요가 있다. 깃허브와 메신저를 이용해 서로의 업로드 상황을 살펴 볼 수는 있었으나, 기타 툴 또는 README를 잘 활용하여 서로의 진행상황을 확인하고, 필요하다면 추가로 공부할 필요가 있다.
+4. AWS S3 버킷<br><br>
 
-<br>
-
-<b>Keep</b><br><br>
-<i>다양한 시도</i><br>
-React를 처음 배웠기 때문에 기본 문법부터 학습하였음에도 불구하고 리액트의 다양한 라이브러리를 사용할 수 있도록 노력하였다. Keyframes, eventListener, bootstrap, styled-component 등을 이용하여 더 쉽고 빠르게 다이나믹한 웹을 구현할 수 있었다.
-
-<br>
-<i>끈기있는 도전</i><br>
-진행 과정 중 문제가 생겨 프론트를 처음부터 다시 구축 해야하는 상황에서 포기하거나 축소시키지 않고 최대한의 역량을 발휘하였다. 끈기있게 도전한 결과 프로젝트를 잘 마무리할 수 있었다.
-
-<br>
-
-<i>작업 방식에 대한 사전 논의</i><br>
-협업을 진행하기 전 작업 툴(github, XD), 의존성 관리(yarn), git 관리 방식(git flow)등을 미리 의논하여 충돌을 최소화하였고 관련 문제를 적게 겪을 수 있었다.
-
-<br>
-<b>Improve</b><br><br>
-<i>계획적인 스케줄링</i><br>
-초기 계획을 잘 실행하고 마무리하기는 했으나, 더 자세하고 계획적인 스케줄링을 통해 보다 ROI가 높은 효율적 개발을 진행할 수 있을 것이라고 생각한다.
-
-<br>
-
-<i>클린코딩</i><br>
-Naming Convention을 잘 따르고, Comments를 더 잘 작성한다면 이전보다 원활한 협업을 할 수 있을 것 같았다. 또한 변수 명에 대한 합의 과정을 거쳐 혼란이나 충돌을 막을 수 있다.
-
-<i>풀스택</i><br>
-웹을 공부하는 과정에서, 담당했던 프론트앤드 뿐만 아니라 백앤드 관련 지식도 있었다면 더 완성도 있는 개발을 진행할 수 있었다고 생각한다. 이후에는 관련한 학습을 추가로 진행해 프로젝트를 보완, 서비스 런칭을 진행하고 싶다.
+    S3(Simple Storage Service)는 단순 스토리지 서비스로 이미지나 파일을 저장할 수 있다, 또한 html, css, js 같은 정적 자원을 올리고, 정적 웹사이트를 호스팅할 수 있다.
+    이때 정적 웹 사이트란 서버 측 스크립트(PHP, JSP, ASP)를 사용하지 않고 html, js, css와 같은 정적 자원으로만 이루어진 웹 사이트를 말한다.
+</details>
 

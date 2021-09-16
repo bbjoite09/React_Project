@@ -1,3 +1,4 @@
+import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import {Route, Switch} from "react-router-dom";
@@ -14,7 +15,7 @@ import { connect } from "react-redux";
 
 
 // 이 함수는 스토어가 가진 상태값을 props로 받아오기 위한 함수예요.
-const mapStateToProps = (state) => ({
+const mapStateTopProps = (state) => ({
   ...state,
 });
 
@@ -39,8 +40,8 @@ class App extends React.Component{
     return (
       <div className="App">
         <Switch>
-          <Route path="/" exact component={Start} />
           <Route path="/quiz" component={Quiz} />
+          <Route path="/" exact component={Start} />
           <Route path="/score" component={Score} />
           <Route path="/message" component={Message} />
           <Route path="/ranking" component={Ranking} />
@@ -50,4 +51,4 @@ class App extends React.Component{
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
+export default connect(mapStateTopProps, mapDispatchToProps)(withRouter(App));
