@@ -1,46 +1,4 @@
 # ⚔ React Project
-## ⚙ 프로젝트 생성 과정
-
-1. 새 CRA 만들기
-
-   ```shell
-   $ yarn create react-app [프로젝트명]
-   ```
-   <br>
-2. index.js에서 <React.StrictMode> 지우기(console 여러개 뜨지 않도록!)
-   
-   ```javascript
-   ReactDOM.render(
-       <App />,
-       document.getElementById('root')
-   );
-   ```
-   <br>
-3. App.js를 class형 컴포넌트로 수정
-
-   ```javascript
-   import React from 'react';
-   
-   class App extends React.Component {
-     constructor(props){
-       super(props);
-   
-       this.state = {}
-     }
-     
-     render(){
-       return (
-         <div className="App">
-           
-         </div>
-       );
-     }
-   }
-   
-   export default App;
-   ```
-<br>
-
 
 ## 🧚🏻‍♂️ SHAP-STORY PROJECT_TIL
 
@@ -178,7 +136,50 @@ Naming Convention을 잘 따르고, Comments를 더 잘 작성한다면 이전�
 
 <br>
 
-##🧚🏻‍♀️️ React Practice
+## ⚙ 프로젝트 생성 과정
+
+1. 새 CRA 만들기
+
+   ```shell
+   $ yarn create react-app [프로젝트명]
+   ```
+   <br>
+2. index.js에서 <React.StrictMode> 지우기(console 여러개 뜨지 않도록!)
+   
+   ```javascript
+   ReactDOM.render(
+       <App />,
+       document.getElementById('root')
+   );
+   ```
+   <br>
+3. App.js를 class형 컴포넌트로 수정
+
+   ```javascript
+   import React from 'react';
+   
+   class App extends React.Component {
+     constructor(props){
+       super(props);
+   
+       this.state = {}
+     }
+     
+     render(){
+       return (
+         <div className="App">
+           
+         </div>
+       );
+     }
+   }
+   
+   export default App;
+   ```
+<br>
+
+
+## 🧚🏻‍♀️️ React Practice
 
 
 
