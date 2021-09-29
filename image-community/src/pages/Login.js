@@ -20,9 +20,11 @@ const Login = (props) => {
                                console.log("패스워드 입력 중")
                            }}></Input>
                 </Grid>
+                <Button text="로그인하기" _onClick={() => {
+                    console.log("로그인 완료!");
+                }}></Button>
             </Grid>
 
-            버튼
         </React.Fragment>
     );
 };
