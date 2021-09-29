@@ -4,9 +4,9 @@ import Post from "../components/Post";
 
 const Login = (props) => {
     return (
-        <React.>
+        <React.Fragment>
 
-        </React.>
+        </React.Fragment>
     );
 };
 
