@@ -1308,4 +1308,53 @@ export default withRouter(App);
     ✔ 프로토타입 → 자바스크립트가 객체를 저렴하고 리소스 낭비없이 생성해보려는 노력이다.
    
 </details>
+<details>
+    <summary><b>2021.10.01</b></summary><br>
+
+1. Promise
+    
+    - 자바스크립트 = single thread
+    - 하지만 비동기 작업 가능
+    
+    <br>
+    → 코어 엔진이 메모리 힙 + 콜스택으로 구성되어있고, 이 콜스택에 작업이 하나씩 쌓여 순차적으로 실행하는 방식인데, 엔진에 추가로 Web API(AJAX, setTimeout, DOM 등), 콜백 큐, 이벤트 루프 등이 함께 동작하면서 동시에 여러 작업을 실행 가능!
+    <br><br>
+
+    1️⃣ 콜백
+    <br><br>
+   자바스크립트가 비동기 처리를 하기 위한 패턴 중 하나 But 전통적인 콜백 패턴은 콜백 헬(or 멸망의 피라미드..) 라고 하는 중첩 문제가 생기기 쉽다.
+   <br><br>
+   
+    ✅ 프로미스<br><br>
+    비동기 연산이 끝난 후 결과를 알기 위해 사용하는 객체!<br>
+    ```javascript
+    const promise = new Promise((resolve, reject) => {
+        if(...){
+            ...
+            resolve("성공!");
+        }else{
+            ...
+            reject("실패!");
+        }
+    });
+    ```
+   
+    <br><br>
+    - 프로미스 상태 값
+        - pending: 비동기 처리 수행 전(resolve, reject가 아직 호출되지 않음)
+        - fulfilled: 수행 성공(resolve가 호출된 상태)
+        - rejected: 수행 실패(reject가 호출된 상태)
+        - settled: 성공 or 실패(resolve나 reject가 호출된 상태)
+    <br><br>
+    - 프로미스 후속 처리 메서드
+        - .then(성공, 실패) : promise.then(성공했을 때 할 일, 실패했을 때 할 일)
+        - .catch(실패) : promise.catch(실패했을 때 할 일)
+    <br><br>
+    - 프로미스 체이닝
+        - 후속 처리 메서드를 체이닝 해서 여러 프로미스를 연결할 수 있다.(promise.then().then().then() 처럼!)
+    <br><br>
+    - async, await
+        - async : 함수 앞에 붙여서 사용(항상 프로미스를 반환)
+        - await : async 안에서 프로미스가 처리될 때 까지 기다렸다가 이후에 결과를 반환하게 해준다.
+</details>
 <br/><br/>
