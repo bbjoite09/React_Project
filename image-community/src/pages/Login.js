@@ -1,9 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import {Text, Grid, Button, Input} from "../elements"
+import {getCookie, setCookie, deleteCookie} from "../shared/Cookie";
 
 
 const Login = (props) => {
+
+    const login = () => {
+        setCookie("user_id", "happii", 3);
+        setCookie("user_pwd", "181026", 3);
+    }
+    console.log(getCookie("user_id"))
+
+
     return (
         <React.Fragment>
             <Grid padding="16px">
@@ -21,7 +30,7 @@ const Login = (props) => {
                            }}></Input>
                 </Grid>
                 <Button text="로그인하기" _onClick={() => {
-                    console.log("로그인 완료!");
+                    login()
                 }}></Button>
             </Grid>
 
