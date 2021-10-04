@@ -28,6 +28,16 @@ const initialState = {
     is_login: false,
 }
 
+// middleware actions
+const loginAction = (user) => {
+    return function (dispatch, getState, {history}) {
+        console.log(history);
+        dispatch(logIn(user));
+        history.push('/');
+    }
+}
+
+
 // reducer
 // 예전에는! 아래처럼
 // const reducer = (state = {}, action = {}) => {
@@ -44,7 +54,9 @@ export default handleActions({
             draft.is_login = true;
         }),
         [LOG_OUT]: (state, action) => produce(state, (draft) => {
-
+            deleteCookie("is_login");
+            draft.user = null;
+            draft.is_login = false;
         }),
         [GET_USER]: (state, action) => produce(state, (draft) => {
 
@@ -57,6 +69,7 @@ const actionCreators = {
     logIn,
     logOut,
     getUser,
+    loginAction,
 }
 
 export {actionCreators};
