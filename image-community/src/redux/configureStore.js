@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
 });
 
 // 미들웨어 준비
-const middlewares = [thunk];
+const middlewares = [thunk.withExtraArgument({history:history})];
 
 // 지금이 어느 환경인 지 알려줘요. (개발환경, 프로덕션(배포)환경 ...)
 const env = process.env.NODE_ENV;
