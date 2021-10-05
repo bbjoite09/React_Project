@@ -37,11 +37,22 @@ const user_initial = {
 }
 
 // middleware actions
-const loginAction = (user) => {
+const loginFB = (id, pwd) => {
     return function (dispatch, getState, {history}) {
-        console.log(history);
-        dispatch(setUser(user));
-        history.push('/');
+        auth.signInWithEmailAndPassword(id, pwd)
+            .then((user) => {
+                console.log(user);
+                dispatch(setUser({
+                    user_name: user.user.displayName,
+                    id: id, user_profile: "",
+                })
+                );
+                history.push('/');
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+            });
     }
 }
 
@@ -54,10 +65,10 @@ const signupFB = (id, pwd, user_name) => {
                 // email 인증에서는 email, pwd만 받아올 수 있어서 이후 처리로 닉네임 등을 받아와야한다.
                 auth.currentUser.updateProfile({
                     displayName: user_name,
-                }).then(()=> {
+                }).then(() => {
                     dispatch(setUser({user_name: user_name, id: id, user_profile: ''}));
                     history.push('/')
-                }).catch((error)=> {
+                }).catch((error) => {
                     console.log(error)
                 });
             })
@@ -102,8 +113,8 @@ export default handleActions({
 const actionCreators = {
     logOut,
     getUser,
-    loginAction,
     signupFB,
+    loginFB,
 }
 
 export {actionCreators};
