@@ -108,6 +108,15 @@ const loginCheckFB = () => {
     }
 }
 
+const logoutFB = ()=> {
+    return function (dispatch, getState, {history}) {
+        auth.signOut().then(()=>{
+            dispatch(logOut());
+            history.replace('/');
+        })
+    }
+}
+
 
 // reducer
 // 예전에는! 아래처럼
@@ -141,7 +150,8 @@ const actionCreators = {
     getUser,
     signupFB,
     loginFB,
-    loginCheckFB
+    loginCheckFB,
+    logoutFB,
 }
 
 export {actionCreators};

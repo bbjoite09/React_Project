@@ -25,7 +25,7 @@ const Header = (props) => {
                         <Button text="내정보"/>
                         <Button text="알림"/>
                         <Button text="로그아웃" _onClick={() => {
-                            dispatch(userActions.logOut({}));
+                            dispatch(userActions.logoutFB());
                         }}/>
                     </Grid>
                 </Grid>
