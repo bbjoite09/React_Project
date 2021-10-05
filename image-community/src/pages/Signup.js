@@ -44,12 +44,14 @@ const Signup = (props) => {
                 </Grid>
                 <Grid padding="16px 0px">
                     <Input label="비밀번호" placeholder="비밀번호를 입력하세요."
+                           type="password"
                            _onChange={(e) => {
                                setPwd(e.target.value)
                            }}/>
                 </Grid>
                 <Grid padding="16px 0px">
                     <Input label="비밀번호 확인" placeholder="비밀번호를 다시 입력하세요."
+                           type="password"
                            _onChange={(e) => {
                                setPwdCheck(e.target.value)
                            }}/>
