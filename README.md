@@ -1357,4 +1357,31 @@ export default withRouter(App);
         - async : 함수 앞에 붙여서 사용(항상 프로미스를 반환)
         - await : async 안에서 프로미스가 처리될 때 까지 기다렸다가 이후에 결과를 반환하게 해준다.
 </details>
+<details>
+    <summary><b>2021.10.05</b></summary><br>
+    
+로그인 상태를 리덕스에 저장하고, 어떤 컴포넌트에서든 편하게 볼 수 있도록 리덕스와 리덕스 모듈 내에서 경로 이동까지 하게 해줄 히스토리, 라우터와 히스토리를 엮어줄 모듈을 설치한다. 
+<br>추가로, 리듀서의 불변성 관리를 자동으로 하기 위해 임머 패키지도 같이 설치하였다.
+
+```shell
+$ yarn add redux react-redux redux-thunk redux-logger history@4.10.1 connected-react-router@6.8.0
+$ yarn add immer redux-actions
+```
+
+<br>
+
+</details>
+
+<details>
+    <summary><b>2021.10.06</b></summary><br>
+
+1. 회원가입 기능 구현<br><br>
+   
+    1. firebase.js에 만들어둔 auth 가져오기
+    2. 리덕스에서 signupFB 함수 만들기
+    3. auth.createUserWithEmailAndPassword()로 가입 시키기
+    4. Signup 컴포넌트에서 signupFB를 호출
+    5. 가입한 후, display_name 바로 업데이트하기
+    6. 사용자 정보 업데이트 후에 메인 페이지로 이동하기
+</details>
 <br/><br/>
