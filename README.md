@@ -1384,4 +1384,8 @@ $ yarn add immer redux-actions
     5. 가입한 후, display_name 바로 업데이트하기
     6. 사용자 정보 업데이트 후에 메인 페이지로 이동하기
 </details>
+<details>
+    <summary><b>2021.10.09</b></summary><br>
+
+</details>
 <br/><br/>
